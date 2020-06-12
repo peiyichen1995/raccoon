@@ -1,5 +1,5 @@
 E = 1
-nu = 0.2
+nu = 0
 Gc = 1
 l = 0.1
 psic = 0
@@ -10,15 +10,33 @@ dc = 1
   type = FixedPointProblem
 []
 
+# [Mesh]
+#   type = GeneratedMesh
+#   dim = 1
+#   nx = 40000
+#   xmin = -5
+#   xmax = 5
+# []
+
 [Mesh]
-  type = FileMesh
-  file = 'gold/geo.msh'
+ [./gmg]
+  type = GeneratedMeshGenerator
+  dim = 1
+  nx = 4000
+  xmin = -5
+  xmax = 5
+ [../]
+ [./middle_nodes]
+  type = BoundingBoxNodeSetGenerator
+  input = 'gmg'
+  new_boundary = middle_nodes
+  bottom_left = '-0.001 0 0'
+  top_right = '0.001 0 0'
+ [../]
 []
 
 [Variables]
   [./disp_x]
-  [../]
-  [./disp_y]
   [../]
   [./d]
   [../]
@@ -61,13 +79,7 @@ dc = 1
     type = ADStressDivergenceTensors
     variable = 'disp_x'
     component = 0
-    displacements = 'disp_x disp_y'
-  [../]
-  [./solid_y]
-    type = ADStressDivergenceTensors
-    variable = 'disp_y'
-    component = 1
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
   [./pressure_body_force_x]
     type = ADPressurizedCrack
@@ -75,13 +87,6 @@ dc = 1
     d = 'd'
     pressure_mat = 'p'
     component = 0
-  [../]
-  [./pressure_body_force_y]
-    type = ADPressurizedCrack
-    variable = 'disp_y'
-    d = 'd'
-    pressure_mat = 'p'
-    component = 1
   [../]
   [./pff_diff]
     type = ADPFFDiffusion
@@ -101,7 +106,7 @@ dc = 1
     type = ADPFFPressure
     variable = 'd'
     pressure_uo = 'pressure_uo'
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
 []
 
@@ -109,15 +114,15 @@ dc = 1
   [./xfix]
     type = DirichletBC
     variable = 'disp_x'
-    boundary = 'top bottom left right'
+    boundary = 'left right'
     value = 0
   [../]
-  [./yfix]
-    type = DirichletBC
-    variable = 'disp_y'
-    boundary = 'top bottom left right'
-    value = 0
-  [../]
+  # [./damage]
+  #   type = DirichletBC
+  #   variable = 'd'
+  #   boundary = 'middle_nodes'
+  #   value = 1
+  # [../]
 []
 
 [ICs]
@@ -126,10 +131,10 @@ dc = 1
     variable = d
     d0 = 1.0
     l = ${l}
-    x1 = -0.2
+    x1 = 0
     y1 = 0
     z1 = 0
-    x2 = 0.2
+    x2 = 0
     y2 = 0
     z2 = 0
   [../]
@@ -139,7 +144,7 @@ dc = 1
   [./pressure]
     type = ADGenericFunctionMaterial
     prop_names = 'p'
-    prop_values = '1e-3'
+    prop_values = '1e-2'
   [../]
   [./elasticity_tensor]
     type = ADComputeIsotropicElasticityTensor
@@ -148,7 +153,7 @@ dc = 1
   [../]
   [./strain]
     type = ADComputeSmallStrain
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
   [./stress]
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
@@ -173,6 +178,9 @@ dc = 1
     d = 'd'
     residual_degradation = ${k}
   [../]
+  [./elastic_energy]
+    type = ElasticEnergyDensity
+  [../]
 []
 
 [Executioner]
@@ -183,7 +191,7 @@ dc = 1
   dt = 1e-4
   end_time = 2e-4
 
-  nl_abs_tol = 1e-08
+  nl_abs_tol = 1e-06
   nl_rel_tol = 1e-06
 
   automatic_scaling = true
@@ -192,6 +200,19 @@ dc = 1
   fp_max_its = 100
   fp_tol = 1e-06
   accept_on_max_fp_iteration = true
+[]
+
+[Postprocessors]
+  [./helmholtz_energy]
+    type = HelmholtzEnergy
+    d = d
+    pressure_mat = 'p'
+    fracture_energy_name = 'fracture_energy'
+  [../]
+  [./fracture_energy]
+    type = FractureEnergy
+    d = d
+  [../]
 []
 
 [Outputs]

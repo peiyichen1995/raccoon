@@ -242,3 +242,6 @@ peacock_tmp_diff.exo
 
 # Fragment Count
 utils/FragCount/FragCount
+
+# Result files 
+benchmarks/sneddon/results
