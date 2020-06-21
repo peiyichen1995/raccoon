@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>Coupleable.md|RACCOON</title><link rel="icon" type="image/x-icon" href="../../media/raccoon_icon.png" sizes="16x16 32x32 64x64 128x128"></link><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../contrib/katex/katex.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/katex_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script><script type="text/javascript" src="../../contrib/katex/katex.min.js"></script><script type="text/javascript" src="../../contrib/plotly/plotly.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="https://hugary1995.github.io/raccoon/index.html" class="left moose-logo hide-on-med-and-down">RACCOON</a><a href="https://github.com/hugary1995/raccoon" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="../../install/index.html">Install</a></li><li><a href="../../theory/index.html">Theory</a></li><li><a href="../../modules/index.html">Modules</a></li><li><a href="../../syntax/index.html">Syntax</a></li><li><a href="../../contribute/index.html">Contribute</a></li></ul><a href="#" class="sidenav-trigger" data-target="e0ca31bf-a405-4991-bcf4-a2ee565932a2"><i class="material-icons">menu</i></a><ul class="sidenav" id="e0ca31bf-a405-4991-bcf4-a2ee565932a2"><li><a href="../../install/index.html">Install</a></li><li><a href="../../theory/index.html">Theory</a></li><li><a href="../../modules/index.html">Modules</a></li><li><a href="../../syntax/index.html">Syntax</a></li><li><a href="../../contribute/index.html">Contribute</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="https://hugary1995.github.io/raccoon/index.html" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">Coupleable</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="a752710b-e16c-40e8-b30a-f7e66099cbaf" data-section-level="1" data-section-text="Coupleable"><h1 id="coupleable">Coupleable</h1><p>This class provides API for coupling different kinds of variables values into MOOSE systems. The following table summarizes the methods and kinds of values they provide:</p><div form="['center', 'center']" recursive="True" class="moose-table-div"><table><thead><tr><th style=";text-align:center">Method</th><th style=";text-align:center">Description</th></tr></thead><tbody><tr><td style=";text-align:center">coupledValue</td><td style=";text-align:center">Values of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledGradient</td><td style=";text-align:center">Gradients of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledSecond</td><td style=";text-align:center">Second derivatives of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledValue</td><td style=";text-align:center">Values of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledGradient</td><td style=";text-align:center">Gradients of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledSecond</td><td style=";text-align:center">Second derivatives of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledNodalValue</td><td style=";text-align:center">Values of a coupled variable at nodes.</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledNodalValue</td><td style=";text-align:center">Values of a coupled (vector) variable at nodes with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorValue</td><td style=";text-align:center">Values of a coupled vector variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledVectorValue</td><td style=";text-align:center">Values of a coupled vector variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledCurl</td><td style=";text-align:center">Curl of a coupled vector variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledDot</td><td style=";text-align:center">Time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledDotDu</td><td style=";text-align:center">Derivative of a time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledNodalDot</td><td style=";text-align:center">Nodal value of the time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorDot</td><td style=";text-align:center">Time derivative of a coupled vector variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorDotDu</td><td style=";text-align:center">Derivative of a time derivative of a coupled vector variable</td></tr></tbody></table></div><p>For values, gradients and second derivatives, users can request old and older values in case they are running a transient simulation. In case of old and older values, the methods are called <code>coupledValueOld</code> and <code>coupledValueOlder</code>, respectively. Similarly,</p><section class="scrollspy" id="96b00f70-6565-454e-9541-2fb8fd9db381" data-section-level="2" data-section-text="Optional Coupling"><h2 id="optional-coupling">Optional Coupling</h2><p>To determine if a variable was coupled, users can use <code>isCoupled</code> method. The typical use case looks like this:</p><pre class="moose-pre"><code class="language-text">
+<!DOCTYPE html><head><meta charset="UTF-8"><title>Coupleable.md|RACCOON</title><link rel="icon" type="image/x-icon" href="../../media/raccoon_icon.png" sizes="16x16 32x32 64x64 128x128"></link><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../contrib/katex/katex.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/katex_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script><script type="text/javascript" src="../../contrib/katex/katex.min.js"></script><script type="text/javascript" src="../../contrib/plotly/plotly.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="https://hugary1995.github.io/raccoon/index.html" class="left moose-logo hide-on-med-and-down">RACCOON</a><a href="https://github.com/hugary1995/raccoon" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="../../install/index.html">Install</a></li><li><a href="../../theory/index.html">Theory</a></li><li><a href="../../modules/index.html">Modules</a></li><li><a href="../../syntax/index.html">Syntax</a></li><li><a href="../../contribute/index.html">Contribute</a></li></ul><a href="#" class="sidenav-trigger" data-target="93ae2465-f644-47aa-9761-be61cd03c408"><i class="material-icons">menu</i></a><ul class="sidenav" id="93ae2465-f644-47aa-9761-be61cd03c408"><li><a href="../../install/index.html">Install</a></li><li><a href="../../theory/index.html">Theory</a></li><li><a href="../../modules/index.html">Modules</a></li><li><a href="../../syntax/index.html">Syntax</a></li><li><a href="../../contribute/index.html">Contribute</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="https://hugary1995.github.io/raccoon/index.html" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">Coupleable</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="1f729ebd-2762-401d-9b40-66fb4232bb54" data-section-level="1" data-section-text="Coupleable"><h1 id="coupleable">Coupleable</h1><p>This class provides API for coupling different kinds of variables values into MOOSE systems. The following table summarizes the methods and kinds of values they provide:</p><div form="['center', 'center']" recursive="True" class="moose-table-div"><table><thead><tr><th style=";text-align:center">Method</th><th style=";text-align:center">Description</th></tr></thead><tbody><tr><td style=";text-align:center">coupledValue</td><td style=";text-align:center">Values of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledGradient</td><td style=";text-align:center">Gradients of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledSecond</td><td style=";text-align:center">Second derivatives of a coupled variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledValue</td><td style=";text-align:center">Values of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledGradient</td><td style=";text-align:center">Gradients of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledSecond</td><td style=";text-align:center">Second derivatives of a coupled variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledNodalValue</td><td style=";text-align:center">Values of a coupled variable at nodes.</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledNodalValue</td><td style=";text-align:center">Values of a coupled (vector) variable at nodes with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorValue</td><td style=";text-align:center">Values of a coupled vector variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">adCoupledVectorValue</td><td style=";text-align:center">Values of a coupled vector variable in q-points with automatic differentiation info</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledCurl</td><td style=";text-align:center">Curl of a coupled vector variable in q-points</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledDot</td><td style=";text-align:center">Time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledDotDu</td><td style=";text-align:center">Derivative of a time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledNodalDot</td><td style=";text-align:center">Nodal value of the time derivative of a coupled variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorDot</td><td style=";text-align:center">Time derivative of a coupled vector variable</td></tr></tbody><tbody><tr><td style=";text-align:center">coupledVectorDotDu</td><td style=";text-align:center">Derivative of a time derivative of a coupled vector variable</td></tr></tbody></table></div><p>For values, gradients and second derivatives, users can request old and older values in case they are running a transient simulation. In case of old and older values, the methods are called <code>coupledValueOld</code> and <code>coupledValueOlder</code>, respectively. Similarly,</p><section class="scrollspy" id="62621a62-1d66-4836-a2ee-e1c1d2495b28" data-section-level="2" data-section-text="Optional Coupling"><h2 id="optional-coupling">Optional Coupling</h2><p>To determine if a variable was coupled, users can use <code>isCoupled</code> method. The typical use case looks like this:</p><pre class="moose-pre"><code class="language-text">
 _value(isCoupled(&quot;v&quot;) ? coupledValue(&quot;v&quot;) : _zero)
 </code></pre><p>However, this use case became obsolete and now it is recommended to use default values for optionally coupled variables, see the following example:</p><pre class="moose-pre"><code class="language-text">
 validParams&lt;Class&gt;()
@@ -10,7 +10,7 @@ validParams&lt;Class&gt;()
 
 Class::Class(...) : BaseClass(...),
   _v(coupledValue(&#x27;v&#x27;))
-</code></pre><p>The advantage here is that users can provide arbitrary default values to their variables.</p></section><section class="scrollspy" id="a6543d09-d103-4324-9da0-5c05d0aa2829" data-section-level="2" data-section-text="Coupling of Vectors of Variables"><h2 id="coupling-of-vectors-of-variables">Coupling of Vectors of Variables</h2><p>Users can couple a vector of variables using the following syntax:</p><pre class="moose-pre"><code class="language-text">
+</code></pre><p>The advantage here is that users can provide arbitrary default values to their variables.</p></section><section class="scrollspy" id="9b71e2c1-8789-40af-b89e-ac1ba8c831bb" data-section-level="2" data-section-text="Coupling of Vectors of Variables"><h2 id="coupling-of-vectors-of-variables">Coupling of Vectors of Variables</h2><p>Users can couple a vector of variables using the following syntax:</p><pre class="moose-pre"><code class="language-text">
 v = &#x27;a b c&#x27;
 </code></pre><p>This syntax provides 3 variables coupled as a variable <code>v</code> in a MOOSE object using the <code>Coupleable</code> interface. The number of components coupled into can be obtained by <code>coupledComponents</code> method. Then, individual components can be obtained by calling <code>coupledValue</code> (or any other method mentioned above) passing in the variable name (as usual) and the component index. See the following example:</p><p>Declarations:</p><pre class="moose-pre"><code class="language-text">
 class B : public A
@@ -34,7 +34,7 @@ B::B(...) : A(...),
   for (unsigned int i = 0; i &lt; _n_vars; i++)
     _vars.push_back(dynamic_cast&lt;MooseVariable *&gt;(getVar(&quot;v&quot;, i)));
 }
-</code></pre></section><section class="scrollspy" id="d48dd63d-ff1b-4dcf-a177-3178d9cd8298" data-section-level="2" data-section-text="Defaults for Coupling of Vectors of Variables"><h2 id="defaults-for-coupling-of-vectors-of-variables">Defaults for Coupling of Vectors of Variables</h2><p>Vectors of variables can be added using <code>params.addCoupledVar</code> as described above. The parameter class allows providing defaults for vector variables as follows:</p><pre class="moose-pre"><code class="language-text">
+</code></pre></section><section class="scrollspy" id="1e76833b-e647-4ae1-8045-80adf8803b0b" data-section-level="2" data-section-text="Defaults for Coupling of Vectors of Variables"><h2 id="defaults-for-coupling-of-vectors-of-variables">Defaults for Coupling of Vectors of Variables</h2><p>Vectors of variables can be added using <code>params.addCoupledVar</code> as described above. The parameter class allows providing defaults for vector variables as follows:</p><pre class="moose-pre"><code class="language-text">
 validParams&lt;B&gt;()
 {
   InputParameters params = validParams&lt;A&gt;();
@@ -47,14 +47,14 @@ v = &#x27;1&#x27;
 v = &#x27;1 2 3&#x27;
 </code></pre><p>for a vector of coupled variables. Currently mixing actual variable assignments and defaults like this:</p><pre class="moose-pre"><code class="language-text">
 v = &#x27;1 actual_var 3&#x27;
-</code></pre><p>is not supported.</p></section><section class="scrollspy" id="f7df5950-e99a-41e5-a6eb-c1491493fea9" data-section-level="2" data-section-text="Coupled Solution DOFs"><h2 id="coupled-solution-dofs">Coupled Solution DOFs</h2><p>It is possible to retrieve the solution DOFs of an element in an elemental loop. This is different than the &quot;value&quot; type coupling which holds the interpolated values of the shape functions themselves. Obtaining the raw DOFs all the user to perform their own integration or other evaluation without going through the interpolation process. These functions can be found here:</p><pre class="moose-pre"><code class="language-cpp">  /**
+</code></pre><p>is not supported.</p></section><section class="scrollspy" id="4bbbabc1-0b9d-48e4-99a9-b638e6b57a13" data-section-level="2" data-section-text="Coupled Solution DOFs"><h2 id="coupled-solution-dofs">Coupled Solution DOFs</h2><p>It is possible to retrieve the solution DOFs of an element in an elemental loop. This is different than the &quot;value&quot; type coupling which holds the interpolated values of the shape functions themselves. Obtaining the raw DOFs all the user to perform their own integration or other evaluation without going through the interpolation process. These functions can be found here:</p><pre class="moose-pre"><code class="language-cpp">  /**
    * Returns DoFs in the current solution vector of a coupled variable for the local element
    * @param var_name Name of coupled variable
    * @param comp Component number for vector of coupled variables
    * @return Reference to a VariableValue for the DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValues(const std::string &amp; var_name,
-                                                 unsigned int comp = 0);
+                                                 unsigned int comp = 0) const;
 
   /**
    * Returns DoFs in the old solution vector of a coupled variable for the local element
@@ -63,7 +63,7 @@ v = &#x27;1 actual_var 3&#x27;
    * @return Reference to a VariableValue for the old DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValuesOld(const std::string &amp; var_name,
-                                                    unsigned int comp = 0);
+                                                    unsigned int comp = 0) const;
 
   /**
    * Returns DoFs in the older solution vector of a coupled variable for the local element
@@ -72,8 +72,8 @@ v = &#x27;1 actual_var 3&#x27;
    * @return Reference to a VariableValue for the older DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValuesOlder(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
-</code></pre><a href="#2e270215-559b-4f61-aa58-efdf82edd8dd" class="modal-trigger">(moose/framework/include/interfaces/Coupleable.h)</a><div class="modal moose-modal" id="2e270215-559b-4f61-aa58-efdf82edd8dd"><div class="modal-content"><h4>/home/travis/build/hugary1995/raccoon/moose/framework/include/interfaces/Coupleable.h</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+                                                      unsigned int comp = 0) const;
+</code></pre><a href="#ade4fbb0-eb9f-444b-9bb1-d4a65e4859d6" class="modal-trigger">(moose/framework/include/interfaces/Coupleable.h)</a><div class="modal moose-modal" id="ade4fbb0-eb9f-444b-9bb1-d4a65e4859d6"><div class="modal-content"><h4>/home/travis/build/hugary1995/raccoon/moose/framework/include/interfaces/Coupleable.h</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -121,7 +121,8 @@ public:
    * Get the list of coupled variables
    * @return The list of coupled variables
    */
-  const std::unordered_map&lt;std::string, std::vector&lt;MooseVariableFieldBase *&gt;&gt; &amp; getCoupledVars()
+  const std::unordered_map&lt;std::string, std::vector&lt;MooseVariableFieldBase *&gt;&gt; &amp;
+  getCoupledVars() const
   {
     return _coupled_vars;
   }
@@ -175,7 +176,7 @@ protected:
    * A call-back function provided by the derived object for actions before coupling a variable
    * with functions such as coupledValue.
    */
-  virtual void coupledCallback(const std::string &amp; /*var_name*/, bool /*is_old*/) {}
+  virtual void coupledCallback(const std::string &amp; /*var_name*/, bool /*is_old*/) const {}
 
   /**
    * Returns true if a variables has been coupled as name.
@@ -183,14 +184,14 @@ protected:
    * @param i By default 0, in general the index to test in a vector of MooseVariable pointers.
    * @return True if a coupled variable has the supplied name
    */
-  virtual bool isCoupled(const std::string &amp; var_name, unsigned int i = 0);
+  virtual bool isCoupled(const std::string &amp; var_name, unsigned int i = 0) const;
 
   /**
    * Number of coupled components
    * @param var_name Name of the variable
    * @return number of components this variable has (usually 1)
    */
-  unsigned int coupledComponents(const std::string &amp; var_name);
+  unsigned int coupledComponents(const std::string &amp; var_name) const;
 
   /**
    * Returns the index for a coupled variable by name
@@ -199,7 +200,7 @@ protected:
    * @return Index of coupled variable, if this is an optionally coupled variable that wasn&#x27;t
    * provided this will return a unique &quot;invalid&quot; index.
    */
-  virtual unsigned int coupled(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual unsigned int coupled(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled variable
@@ -208,7 +209,18 @@ protected:
    * @return Reference to a VariableValue for the coupled variable
    * @see Kernel::_u
    */
-  virtual const VariableValue &amp; coupledValue(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableValue &amp; coupledValue(const std::string &amp; var_name,
+                                             unsigned int comp = 0) const;
+
+  /**
+   * Returns value of a coupled variable for use in templated auatomatic differentiation classes
+   * @param var_name Name of coupled variable
+   * @param comp Component number for vector of coupled variables
+   * @return Reference to a VariableValue for the coupled variable
+   */
+  template &lt;bool is_ad&gt;
+  const GenericVariableValue&lt;is_ad&gt; &amp; coupledGenericValue(const std::string &amp; var_name,
+                                                          unsigned int comp = 0);
 
   /**
    * Returns value of a coupled variable for use in Automatic Differentiation
@@ -216,7 +228,7 @@ protected:
    * @param comp Component number for vector of coupled variables
    * @return Reference to a ADVariableValue for the coupled variable
    */
-  const ADVariableValue &amp; adCoupledValue(const std::string &amp; var_name, unsigned int comp = 0);
+  const ADVariableValue &amp; adCoupledValue(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled vector variable for use in Automatic Differentiation
@@ -226,7 +238,7 @@ protected:
    * @see Kernel::value
    */
   const ADVectorVariableValue &amp; adCoupledVectorValue(const std::string &amp; var_name,
-                                                     unsigned int comp = 0);
+                                                     unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled variable for a given tag
@@ -237,7 +249,7 @@ protected:
    * @see Kernel::_u
    */
   virtual const VariableValue &amp;
-  coupledVectorTagValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0);
+  coupledVectorTagValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0) const;
 
   /**
    * Returns dof value of a coupled variable for a given tag
@@ -247,7 +259,7 @@ protected:
    * @return Reference to a DofValue for the coupled variable
    */
   virtual const VariableValue &amp;
-  coupledVectorTagDofValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0);
+  coupledVectorTagDofValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled variable for a given tag. This couples the diag vector of matrix
@@ -258,7 +270,7 @@ protected:
    * @see Kernel::_u
    */
   virtual const VariableValue &amp;
-  coupledMatrixTagValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0);
+  coupledMatrixTagValue(const std::string &amp; var_name, TagID tag, unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled vector variable
@@ -268,7 +280,7 @@ protected:
    * @see VectorKernel::_u
    */
   virtual const VectorVariableValue &amp; coupledVectorValue(const std::string &amp; var_name,
-                                                         unsigned int comp = 0);
+                                                         unsigned int comp = 0) const;
 
   /**
    * Returns value of a coupled array variable
@@ -278,7 +290,7 @@ protected:
    * @see ArrayKernel::_u
    */
   virtual const ArrayVariableValue &amp; coupledArrayValue(const std::string &amp; var_name,
-                                                       unsigned int comp = 0);
+                                                       unsigned int comp = 0) const;
 
   /**
    * Returns a *writable* reference to a coupled variable.  Note: you
@@ -300,7 +312,7 @@ protected:
    * @see Kernel::valueOld
    */
   virtual const VariableValue &amp; coupledValueOld(const std::string &amp; var_name,
-                                                unsigned int comp = 0);
+                                                unsigned int comp = 0) const;
 
   /**
    * Returns an old value from two time steps previous of a coupled variable
@@ -310,7 +322,7 @@ protected:
    * @see Kernel::valueOlder
    */
   virtual const VariableValue &amp; coupledValueOlder(const std::string &amp; var_name,
-                                                  unsigned int comp = 0);
+                                                  unsigned int comp = 0) const;
 
   /**
    * Returns value of previous Newton iterate of a coupled variable
@@ -319,7 +331,7 @@ protected:
    * @return Reference to a VariableValue containing the older value of the coupled variable
    */
   virtual const VariableValue &amp; coupledValuePreviousNL(const std::string &amp; var_name,
-                                                       unsigned int comp = 0);
+                                                       unsigned int comp = 0) const;
 
   /**
    * Returns an old value from previous time step  of a coupled vector variable
@@ -329,7 +341,7 @@ protected:
    * @see VectorKernel::_u_old
    */
   virtual const VectorVariableValue &amp; coupledVectorValueOld(const std::string &amp; var_name,
-                                                            unsigned int comp = 0);
+                                                            unsigned int comp = 0) const;
 
   /**
    * Returns an old value from two time steps previous of a coupled vector variable
@@ -339,7 +351,7 @@ protected:
    * @see VectorKernel::_u_older
    */
   virtual const VectorVariableValue &amp; coupledVectorValueOlder(const std::string &amp; var_name,
-                                                              unsigned int comp = 0);
+                                                              unsigned int comp = 0) const;
 
   /**
    * Returns an old value from previous time step  of a coupled array variable
@@ -349,7 +361,7 @@ protected:
    * @see ArrayKernel::_u_old
    */
   virtual const ArrayVariableValue &amp; coupledArrayValueOld(const std::string &amp; var_name,
-                                                          unsigned int comp = 0);
+                                                          unsigned int comp = 0) const;
 
   /**
    * Returns an old value from two time steps previous of a coupled array variable
@@ -359,7 +371,7 @@ protected:
    * @see ArrayKernel::_u_older
    */
   virtual const ArrayVariableValue &amp; coupledArrayValueOlder(const std::string &amp; var_name,
-                                                            unsigned int comp = 0);
+                                                            unsigned int comp = 0) const;
 
   /**
    * Returns gradient of a coupled variable
@@ -369,7 +381,7 @@ protected:
    * @see Kernel::gradient
    */
   virtual const VariableGradient &amp; coupledGradient(const std::string &amp; var_name,
-                                                   unsigned int comp = 0);
+                                                   unsigned int comp = 0) const;
 
   /**
    * Returns gradient of a coupled variable for use in Automatic Differentation
@@ -378,7 +390,19 @@ protected:
    * @return Reference to a VariableGradient containing the gradient of the coupled variable
    * @see Kernel::gradient
    */
-  const ADVariableGradient &amp; adCoupledGradient(const std::string &amp; var_name, unsigned int comp = 0);
+  const ADVariableGradient &amp; adCoupledGradient(const std::string &amp; var_name,
+                                               unsigned int comp = 0) const;
+
+  /**
+   * Returns gradient of a coupled variable for use in templated automatic differentiation
+   * @param var_name Name of coupled variable
+   * @param comp Component number for vector of coupled variables
+   * @return Reference to a VariableGradient containing the gradient of the coupled variable
+   * @see Kernel::gradient
+   */
+  template &lt;bool is_ad&gt;
+  const GenericVariableGradient&lt;is_ad&gt; &amp; coupledGenericGradient(const std::string &amp; var_name,
+                                                                unsigned int comp = 0);
 
   /**
    * Returns gradient of a coupled vector variable for use in Automatic Differentation
@@ -388,7 +412,7 @@ protected:
    * @see Kernel::gradient
    */
   const ADVectorVariableGradient &amp; adCoupledVectorGradient(const std::string &amp; var_name,
-                                                           unsigned int comp = 0);
+                                                           unsigned int comp = 0) const;
 
   /**
    * Returns second derivatives of a coupled variable for use in Automatic Differentation
@@ -396,7 +420,8 @@ protected:
    * @param comp Component number for vector of coupled variables
    * @return Reference to a VariableSecond containing the second derivatives of the coupled variable
    */
-  const ADVariableSecond &amp; adCoupledSecond(const std::string &amp; var_name, unsigned int comp = 0);
+  const ADVariableSecond &amp; adCoupledSecond(const std::string &amp; var_name,
+                                           unsigned int comp = 0) const;
 
   /**
    * Returns second derivatives of a coupled vector variable for use in Automatic Differentation
@@ -406,7 +431,7 @@ protected:
    * variable
    */
   const ADVectorVariableSecond &amp; adCoupledVectorSecond(const std::string &amp; var_name,
-                                                       unsigned int comp = 0);
+                                                       unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from previous time step of a coupled variable
@@ -416,7 +441,7 @@ protected:
    * @see Kernel::gradientOld
    */
   virtual const VariableGradient &amp; coupledGradientOld(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from two time steps previous of a coupled variable
@@ -426,7 +451,7 @@ protected:
    * @see Kernel::gradientOlder
    */
   virtual const VariableGradient &amp; coupledGradientOlder(const std::string &amp; var_name,
-                                                        unsigned int comp = 0);
+                                                        unsigned int comp = 0) const;
 
   /**
    * Returns gradient of a coupled variable for previous Newton iterate
@@ -435,7 +460,7 @@ protected:
    * @return Reference to a VariableGradient containing the gradient of the coupled variable
    */
   virtual const VariableGradient &amp; coupledGradientPreviousNL(const std::string &amp; var_name,
-                                                             unsigned int comp = 0);
+                                                             unsigned int comp = 0) const;
 
   /**
    * Time derivative of the gradient of a coupled variable
@@ -445,7 +470,7 @@ protected:
    * coupled variable
    */
   virtual const VariableGradient &amp; coupledGradientDot(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
 
   /**
    * Second time derivative of the gradient of a coupled variable
@@ -455,7 +480,7 @@ protected:
    * coupled variable
    */
   virtual const VariableGradient &amp; coupledGradientDotDot(const std::string &amp; var_name,
-                                                         unsigned int comp = 0);
+                                                         unsigned int comp = 0) const;
 
   /**
    * Returns gradient of a coupled vector variable
@@ -465,7 +490,7 @@ protected:
    * variable
    */
   virtual const VectorVariableGradient &amp; coupledVectorGradient(const std::string &amp; var_name,
-                                                               unsigned int comp = 0);
+                                                               unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from previous time step of a coupled vector variable
@@ -475,7 +500,7 @@ protected:
    * variable
    */
   virtual const VectorVariableGradient &amp; coupledVectorGradientOld(const std::string &amp; var_name,
-                                                                  unsigned int comp = 0);
+                                                                  unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from two time steps previous of a coupled vector variable
@@ -485,7 +510,7 @@ protected:
    * vector variable
    */
   virtual const VectorVariableGradient &amp; coupledVectorGradientOlder(const std::string &amp; var_name,
-                                                                    unsigned int comp = 0);
+                                                                    unsigned int comp = 0) const;
 
   /**
    * Returns gradient of a coupled array variable
@@ -495,7 +520,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableGradient &amp; coupledArrayGradient(const std::string &amp; var_name,
-                                                             unsigned int comp = 0);
+                                                             unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from previous time step of a coupled array variable
@@ -505,7 +530,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableGradient &amp; coupledArrayGradientOld(const std::string &amp; var_name,
-                                                                unsigned int comp = 0);
+                                                                unsigned int comp = 0) const;
 
   /**
    * Returns an old gradient from two time steps previous of a coupled array variable
@@ -515,7 +540,7 @@ protected:
    * array variable
    */
   virtual const ArrayVariableGradient &amp; coupledArrayGradientOlder(const std::string &amp; var_name,
-                                                                  unsigned int comp = 0);
+                                                                  unsigned int comp = 0) const;
 
   /**
    * Returns curl of a coupled variable
@@ -525,7 +550,7 @@ protected:
    * @see Kernel::_curl_u
    */
   virtual const VectorVariableCurl &amp; coupledCurl(const std::string &amp; var_name,
-                                                 unsigned int comp = 0);
+                                                 unsigned int comp = 0) const;
 
   /**
    * Returns an old curl from previous time step of a coupled variable
@@ -535,7 +560,7 @@ protected:
    * @see Kernel::_curl_u_old
    */
   virtual const VectorVariableCurl &amp; coupledCurlOld(const std::string &amp; var_name,
-                                                    unsigned int comp = 0);
+                                                    unsigned int comp = 0) const;
 
   /**
    * Returns an old curl from two time steps previous of a coupled variable
@@ -545,7 +570,7 @@ protected:
    * @see Kernel::_curl_u_older
    */
   virtual const VectorVariableCurl &amp; coupledCurlOlder(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
 
   /**
    * Returns second derivative of a coupled variable
@@ -554,7 +579,8 @@ protected:
    * @return Reference to a VariableSecond containing the second derivative of the coupled variable
    * @see Kernel::second
    */
-  virtual const VariableSecond &amp; coupledSecond(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableSecond &amp; coupledSecond(const std::string &amp; var_name,
+                                               unsigned int comp = 0) const;
 
   /**
    * Returns an old second derivative from previous time step of a coupled variable
@@ -565,7 +591,7 @@ protected:
    * @see Kernel::secondOld
    */
   virtual const VariableSecond &amp; coupledSecondOld(const std::string &amp; var_name,
-                                                  unsigned int comp = 0);
+                                                  unsigned int comp = 0) const;
 
   /**
    * Returns an old second derivative from two time steps previous of a coupled variable
@@ -576,7 +602,7 @@ protected:
    * @see Kernel::secondOlder
    */
   virtual const VariableSecond &amp; coupledSecondOlder(const std::string &amp; var_name,
-                                                    unsigned int comp = 0);
+                                                    unsigned int comp = 0) const;
 
   /**
    * Returns second derivative of a coupled variable for the previous Newton iterate
@@ -585,7 +611,7 @@ protected:
    * @return Reference to a VariableSecond containing the second derivative of the coupled variable
    */
   virtual const VariableSecond &amp; coupledSecondPreviousNL(const std::string &amp; var_name,
-                                                         unsigned int comp = 0);
+                                                         unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled variable
@@ -593,7 +619,8 @@ protected:
    * @param comp Component number for vector of coupled variables
    * @return Reference to a VariableValue containing the time derivative of the coupled variable
    */
-  virtual const VariableValue &amp; coupledDot(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableValue &amp; coupledDot(const std::string &amp; var_name,
+                                           unsigned int comp = 0) const;
 
   /**
    * Second time derivative of a coupled variable
@@ -602,7 +629,8 @@ protected:
    * @return Reference to a VariableValue containing the second time derivative of the coupled
    * variable
    */
-  virtual const VariableValue &amp; coupledDotDot(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableValue &amp; coupledDotDot(const std::string &amp; var_name,
+                                              unsigned int comp = 0) const;
 
   /**
    * Old time derivative of a coupled variable
@@ -610,7 +638,8 @@ protected:
    * @param comp Component number for vector of coupled variables
    * @return Reference to a VariableValue containing the old time derivative of the coupled variable
    */
-  virtual const VariableValue &amp; coupledDotOld(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableValue &amp; coupledDotOld(const std::string &amp; var_name,
+                                              unsigned int comp = 0) const;
 
   /**
    * Old second time derivative of a coupled variable
@@ -620,7 +649,7 @@ protected:
    * variable
    */
   virtual const VariableValue &amp; coupledDotDotOld(const std::string &amp; var_name,
-                                                 unsigned int comp = 0);
+                                                 unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled variable for ad simulations
@@ -629,7 +658,7 @@ protected:
    * @return Reference to a VariableValue containing the time derivative of the coupled variable
    * @see Kernel::dot
    */
-  const ADVariableValue &amp; adCoupledDot(const std::string &amp; var_name, unsigned int comp = 0);
+  const ADVariableValue &amp; adCoupledDot(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Time derivative of a vector coupled variable for ad simulations
@@ -640,7 +669,7 @@ protected:
    * @see Kernel::dot
    */
   const ADVectorVariableValue &amp; adCoupledVectorDot(const std::string &amp; var_name,
-                                                   unsigned int comp = 0);
+                                                   unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled vector variable
@@ -650,7 +679,7 @@ protected:
    * variable
    */
   virtual const VectorVariableValue &amp; coupledVectorDot(const std::string &amp; var_name,
-                                                       unsigned int comp = 0);
+                                                       unsigned int comp = 0) const;
 
   /**
    * Second time derivative of a coupled vector variable
@@ -660,7 +689,7 @@ protected:
    * variable
    */
   virtual const VectorVariableValue &amp; coupledVectorDotDot(const std::string &amp; var_name,
-                                                          unsigned int comp = 0);
+                                                          unsigned int comp = 0) const;
 
   /**
    * Old time derivative of a coupled vector variable
@@ -670,7 +699,7 @@ protected:
    * variable
    */
   virtual const VectorVariableValue &amp; coupledVectorDotOld(const std::string &amp; var_name,
-                                                          unsigned int comp = 0);
+                                                          unsigned int comp = 0) const;
 
   /**
    * Old second time derivative of a coupled vector variable
@@ -680,7 +709,7 @@ protected:
    * variable
    */
   virtual const VectorVariableValue &amp; coupledVectorDotDotOld(const std::string &amp; var_name,
-                                                             unsigned int comp = 0);
+                                                             unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled vector variable with respect to the coefficients
@@ -690,7 +719,7 @@ protected:
    * vector variable with respect to the coefficients
    */
   virtual const VariableValue &amp; coupledVectorDotDu(const std::string &amp; var_name,
-                                                   unsigned int comp = 0);
+                                                   unsigned int comp = 0) const;
 
   /**
    * Second time derivative of a coupled vector variable with respect to the coefficients
@@ -700,7 +729,7 @@ protected:
    * variable with respect to the coefficients
    */
   virtual const VariableValue &amp; coupledVectorDotDotDu(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled array variable
@@ -710,7 +739,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableValue &amp; coupledArrayDot(const std::string &amp; var_name,
-                                                     unsigned int comp = 0);
+                                                     unsigned int comp = 0) const;
 
   /**
    * Second time derivative of a coupled array variable
@@ -720,7 +749,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableValue &amp; coupledArrayDotDot(const std::string &amp; var_name,
-                                                        unsigned int comp = 0);
+                                                        unsigned int comp = 0) const;
 
   /**
    * Old time derivative of a coupled array variable
@@ -730,7 +759,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableValue &amp; coupledArrayDotOld(const std::string &amp; var_name,
-                                                        unsigned int comp = 0);
+                                                        unsigned int comp = 0) const;
 
   /**
    * Old second time derivative of a coupled array variable
@@ -740,7 +769,7 @@ protected:
    * variable
    */
   virtual const ArrayVariableValue &amp; coupledArrayDotDotOld(const std::string &amp; var_name,
-                                                           unsigned int comp = 0);
+                                                           unsigned int comp = 0) const;
 
   /**
    * Time derivative of a coupled variable with respect to the coefficients
@@ -749,7 +778,8 @@ protected:
    * @return Reference to a VariableValue containing the time derivative of the coupled variable
    * with respect to the coefficients
    */
-  virtual const VariableValue &amp; coupledDotDu(const std::string &amp; var_name, unsigned int comp = 0);
+  virtual const VariableValue &amp; coupledDotDu(const std::string &amp; var_name,
+                                             unsigned int comp = 0) const;
 
   /**
    * Second time derivative of a coupled variable with respect to the coefficients
@@ -759,7 +789,7 @@ protected:
    * with respect to the coefficients
    */
   virtual const VariableValue &amp; coupledDotDotDu(const std::string &amp; var_name,
-                                                unsigned int comp = 0);
+                                                unsigned int comp = 0) const;
 
   /**
    * Returns nodal values of a coupled variable
@@ -768,7 +798,7 @@ protected:
    * @return Reference to a VariableValue for the coupled variable
    */
   template &lt;typename T&gt;
-  const T &amp; coupledNodalValue(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; coupledNodalValue(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Returns AD nodal values of a coupled variable
@@ -778,7 +808,7 @@ protected:
    */
   template &lt;typename T&gt;
   const typename Moose::ADType&lt;T&gt;::type &amp; adCoupledNodalValue(const std::string &amp; var_name,
-                                                              unsigned int comp = 0);
+                                                              unsigned int comp = 0) const;
 
   /**
    * Returns an old nodal value from previous time step  of a coupled variable
@@ -787,7 +817,7 @@ protected:
    * @return Reference to a VariableValue containing the old value of the coupled variable
    */
   template &lt;typename T&gt;
-  const T &amp; coupledNodalValueOld(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; coupledNodalValueOld(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Returns an old nodal value from two time steps previous of a coupled variable
@@ -796,7 +826,7 @@ protected:
    * @return Reference to a VariableValue containing the older value of the coupled variable
    */
   template &lt;typename T&gt;
-  const T &amp; coupledNodalValueOlder(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; coupledNodalValueOlder(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Returns nodal values of a coupled variable for previous Newton iterate
@@ -805,7 +835,7 @@ protected:
    * @return Reference to a VariableValue for the coupled variable
    */
   template &lt;typename T&gt;
-  const T &amp; coupledNodalValuePreviousNL(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; coupledNodalValuePreviousNL(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Nodal values of time derivative of a coupled variable
@@ -815,7 +845,7 @@ protected:
    * coupled variable
    */
   template &lt;typename T&gt;
-  const T &amp; coupledNodalDot(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; coupledNodalDot(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /**
    * Nodal values of second time derivative of a coupled variable
@@ -825,7 +855,7 @@ protected:
    * the coupled variable
    */
   virtual const VariableValue &amp; coupledNodalDotDot(const std::string &amp; var_name,
-                                                   unsigned int comp = 0);
+                                                   unsigned int comp = 0) const;
 
   /**
    * Nodal values of old time derivative of a coupled variable
@@ -835,7 +865,7 @@ protected:
    * coupled variable
    */
   virtual const VariableValue &amp; coupledNodalDotOld(const std::string &amp; var_name,
-                                                   unsigned int comp = 0);
+                                                   unsigned int comp = 0) const;
 
   /**
    * Nodal values of old second time derivative of a coupled variable
@@ -845,7 +875,7 @@ protected:
    * the coupled variable
    */
   virtual const VariableValue &amp; coupledNodalDotDotOld(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
   // coupled-dof-values-begin
   /**
    * Returns DoFs in the current solution vector of a coupled variable for the local element
@@ -854,7 +884,7 @@ protected:
    * @return Reference to a VariableValue for the DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValues(const std::string &amp; var_name,
-                                                 unsigned int comp = 0);
+                                                 unsigned int comp = 0) const;
 
   /**
    * Returns DoFs in the old solution vector of a coupled variable for the local element
@@ -863,7 +893,7 @@ protected:
    * @return Reference to a VariableValue for the old DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValuesOld(const std::string &amp; var_name,
-                                                    unsigned int comp = 0);
+                                                    unsigned int comp = 0) const;
 
   /**
    * Returns DoFs in the older solution vector of a coupled variable for the local element
@@ -872,25 +902,46 @@ protected:
    * @return Reference to a VariableValue for the older DoFs of the coupled variable
    */
   virtual const VariableValue &amp; coupledDofValuesOlder(const std::string &amp; var_name,
-                                                      unsigned int comp = 0);
+                                                      unsigned int comp = 0) const;
   // coupled-dof-values-end
 
   /**
-   *  method that returns _zero to RESIDUAL computing objects and _ad_zero to JACOBIAN
+   * method that returns _zero to RESIDUAL computing objects and _ad_zero to JACOBIAN
    * computing objects
    */
-  const ADVariableValue &amp; adZeroValue();
+  const ADVariableValue &amp; adZeroValue() const;
 
   /**
    *  method that returns _grad_zero to RESIDUAL computing objects and _ad_grad_zero to
    * JACOBIAN computing objects
    */
-  const ADVariableGradient &amp; adZeroGradient();
+  const ADVariableGradient &amp; adZeroGradient() const;
 
   /**
    * Retrieve a zero second for automatic differentiation
    */
-  const ADVariableSecond &amp; adZeroSecond();
+  const ADVariableSecond &amp; adZeroSecond() const;
+
+  /**
+   * Returns zero value templated with automatic differentiation boolean
+   * @return Reference to a const GenericVariableValue
+   */
+  template &lt;bool is_ad&gt;
+  const GenericVariableValue&lt;is_ad&gt; &amp; genericZeroValue();
+
+  /**
+   * Returns zero gradient templated with automatic differentiation boolean
+   * @return Reference to a const GenericVariableValue
+   */
+  template &lt;bool is_ad&gt;
+  const GenericVariableGradient&lt;is_ad&gt; &amp; genericZeroGradient();
+
+  /**
+   * Returns zero second derivative templated with automatic differentiation boolean
+   * @return Reference to a const GenericVariableValue
+   */
+  template &lt;bool is_ad&gt;
+  const GenericVariableSecond&lt;is_ad&gt; &amp; genericZeroSecond();
 
 protected:
   // Reference to the interface&#x27;s input parameters
@@ -930,19 +981,21 @@ protected:
   THREAD_ID _c_tid;
 
   /// Will hold the default value for optional coupled variables.
-  std::unordered_map&lt;std::string, std::vector&lt;std::unique_ptr&lt;VariableValue&gt;&gt;&gt; _default_value;
+  mutable std::unordered_map&lt;std::string, std::vector&lt;std::unique_ptr&lt;VariableValue&gt;&gt;&gt;
+      _default_value;
 
   /// Will hold the default value for optional coupled variables for automatic differentiation.
-  std::unordered_map&lt;std::string, std::unique_ptr&lt;MooseArray&lt;DualReal&gt;&gt;&gt; _ad_default_value;
+  mutable std::unordered_map&lt;std::string, std::unique_ptr&lt;MooseArray&lt;DualReal&gt;&gt;&gt; _ad_default_value;
 
   /// Will hold the default value for optional vector coupled variables.
-  std::unordered_map&lt;std::string, std::unique_ptr&lt;VectorVariableValue&gt;&gt; _default_vector_value;
+  mutable std::unordered_map&lt;std::string, std::unique_ptr&lt;VectorVariableValue&gt;&gt;
+      _default_vector_value;
 
   /// Will hold the default value for optional array coupled variables.
-  std::map&lt;std::string, ArrayVariableValue *&gt; _default_array_value;
+  mutable std::map&lt;std::string, ArrayVariableValue *&gt; _default_array_value;
 
   /// Will hold the default value for optional vector coupled variables for automatic differentiation.
-  std::unordered_map&lt;std::string, std::unique_ptr&lt;MooseArray&lt;ADRealVectorValue&gt;&gt;&gt;
+  mutable std::unordered_map&lt;std::string, std::unique_ptr&lt;MooseArray&lt;ADRealVectorValue&gt;&gt;&gt;
       _ad_default_vector_value;
 
   /**
@@ -1017,7 +1070,8 @@ protected:
    *
    * @param var_name The name of the coupled variable
    */
-  bool checkVar(const std::string &amp; var_name, unsigned int comp = 0, unsigned int comp_bound = 0);
+  bool
+  checkVar(const std::string &amp; var_name, unsigned int comp = 0, unsigned int comp_bound = 0) const;
 
 private:
   enum class FuncAge
@@ -1036,7 +1090,7 @@ private:
     Dot,
   };
 
-  void checkFuncType(const std::string var_name, VarType t, FuncAge age);
+  void checkFuncType(const std::string var_name, VarType t, FuncAge age) const;
 
 protected:
   /**
@@ -1047,7 +1101,7 @@ protected:
    * @param comp Component number of multiple coupled variables
    * @return Pointer to the desired variable
    */
-  MooseVariableFieldBase * getFEVar(const std::string &amp; var_name, unsigned int comp);
+  const MooseVariableFieldBase * getFEVar(const std::string &amp; var_name, unsigned int comp) const;
 
   /*
    * Extract pointer to a base coupled field variable. Could be either a finite volume or finite
@@ -1056,13 +1110,13 @@ protected:
    * @param comp Component number of multiple coupled variables
    * @return Pointer to the desired variable
    */
-  MooseVariableFieldBase * getFieldVar(const std::string &amp; var_name, unsigned int comp);
+  const MooseVariableFieldBase * getFieldVar(const std::string &amp; var_name, unsigned int comp) const;
 
   /**
    * Helper that that be used to retrieve a variable of arbitrary type \p T
    */
   template &lt;typename T, typename std::enable_if&lt;HasMemberType_OutputShape&lt;T&gt;::value, int&gt;::type = 0&gt;
-  T * getVarHelper(const std::string &amp; var_name, unsigned int comp);
+  const T * getVarHelper(const std::string &amp; var_name, unsigned int comp) const;
 
   /**
    * Reverse compatibility helper that can be used to retried a variable of type \p
@@ -1070,7 +1124,7 @@ protected:
    */
   template &lt;typename T,
             typename std::enable_if&lt;!HasMemberType_OutputShape&lt;T&gt;::value, int&gt;::type = 0&gt;
-  MooseVariableFE&lt;T&gt; * getVarHelper(const std::string &amp; var_name, unsigned int comp);
+  const MooseVariableFE&lt;T&gt; * getVarHelper(const std::string &amp; var_name, unsigned int comp) const;
 
   /**
    * Extract pointer to a coupled variable
@@ -1097,6 +1151,30 @@ protected:
   ArrayMooseVariable * getArrayVar(const std::string &amp; var_name, unsigned int comp);
 
   /**
+   * Extract pointer to a coupled variable
+   * @param var_name Name of parameter desired
+   * @param comp Component number of multiple coupled variables
+   * @return Pointer to the desired variable
+   */
+  const MooseVariable * getVar(const std::string &amp; var_name, unsigned int comp) const;
+
+  /**
+   * Extract pointer to a coupled vector variable
+   * @param var_name Name of parameter desired
+   * @param comp Component number of multiple coupled variables
+   * @return Pointer to the desired variable
+   */
+  const VectorMooseVariable * getVectorVar(const std::string &amp; var_name, unsigned int comp) const;
+
+  /**
+   * Extract pointer to a coupled array variable
+   * @param var_name Name of parameter desired
+   * @param comp Component number of multiple coupled variables
+   * @return Pointer to the desired variable
+   */
+  const ArrayMooseVariable * getArrayVar(const std::string &amp; var_name, unsigned int comp) const;
+
+  /**
    * Checks to make sure that the current Executioner has set &quot;_is_transient&quot; when old/older values
    * are coupled in.
    * @param name the name of the variable
@@ -1114,7 +1192,7 @@ public:
    * @param var_name the name of the variable for which to retrieve a default value
    * @return VariableValue * a pointer to the associated VarirableValue.
    */
-  ADVariableValue * getADDefaultValue(const std::string &amp; var_name);
+  const ADVariableValue * getADDefaultValue(const std::string &amp; var_name) const;
 
   /**
    * Helper method to return (and insert if necessary) the default vector value for Automatic
@@ -1122,7 +1200,7 @@ public:
    * @param var_name the name of the vector variable for which to retrieve a default value
    * @return VariableVectorValue * a pointer to the associated VarirableVectorValue.
    */
-  ADVectorVariableValue * getADDefaultVectorValue(const std::string &amp; var_name);
+  const ADVectorVariableValue * getADDefaultVectorValue(const std::string &amp; var_name) const;
 
   /**
    * Helper method to return (and insert if necessary) the default gradient for Automatic
@@ -1130,7 +1208,7 @@ public:
    * @param var_name the name of the variable for which to retrieve a default gradient
    * @return VariableGradient * a pointer to the associated VariableGradient.
    */
-  ADVariableGradient &amp; getADDefaultGradient();
+  const ADVariableGradient &amp; getADDefaultGradient() const;
 
   /**
    * Helper method to return (and insert if necessary) the default gradient for Automatic
@@ -1138,7 +1216,7 @@ public:
    * @param var_name the name of the vector variable for which to retrieve a default gradient
    * @return VariableGradient * a pointer to the associated VectorVariableGradient.
    */
-  ADVectorVariableGradient &amp; getADDefaultVectorGradient();
+  const ADVectorVariableGradient &amp; getADDefaultVectorGradient() const;
 
   /**
    * Helper method to return (and insert if necessary) the default second derivatives for Automatic
@@ -1146,7 +1224,7 @@ public:
    * @param var_name the name of the variable for which to retrieve a default second derivative
    * @return VariableSecond * a pointer to the associated VariableSecond.
    */
-  ADVariableSecond &amp; getADDefaultSecond();
+  const ADVariableSecond &amp; getADDefaultSecond() const;
 
 private:
   /**
@@ -1155,7 +1233,7 @@ private:
    * @param var_name the name of the variable for which to retrieve a default value
    * @return a pointer to the associated VariableValue.
    */
-  VariableValue * getDefaultValue(const std::string &amp; var_name, unsigned int comp);
+  const VariableValue * getDefaultValue(const std::string &amp; var_name, unsigned int comp) const;
 
   /**
    * Helper method to return (and insert if necessary) the default value
@@ -1163,7 +1241,7 @@ private:
    * @param var_name the name of the vector variable for which to retrieve a default value
    * @return a pointer to the associated VectorVariableValue.
    */
-  VectorVariableValue * getDefaultVectorValue(const std::string &amp; var_name);
+  const VectorVariableValue * getDefaultVectorValue(const std::string &amp; var_name) const;
 
   /**
    * Helper method to return (and insert if necessary) the default value
@@ -1171,13 +1249,13 @@ private:
    * @param var_name the name of the vector variable for which to retrieve a default value
    * @return a pointer to the associated VectorVariableValue.
    */
-  ArrayVariableValue * getDefaultArrayValue(const std::string &amp; var_name);
+  const ArrayVariableValue * getDefaultArrayValue(const std::string &amp; var_name) const;
 
   /**
    * Get nodal default value
    */
   template &lt;typename T&gt;
-  const T &amp; getDefaultNodalValue(const std::string &amp; var_name, unsigned int comp = 0);
+  const T &amp; getDefaultNodalValue(const std::string &amp; var_name, unsigned int comp = 0) const;
 
   /// Maximum qps for any element in this system
   unsigned int _coupleable_max_qps;
@@ -1200,13 +1278,17 @@ private:
 };
 
 template &lt;typename T, typename std::enable_if&lt;HasMemberType_OutputShape&lt;T&gt;::value, int&gt;::type&gt;
-T *
-Coupleable::getVarHelper(const std::string &amp; var_name, unsigned int comp)
+const T *
+Coupleable::getVarHelper(const std::string &amp; var_name, unsigned int comp) const
 {
   if (!checkVar(var_name, comp, 0))
     return nullptr;
 
-  if (auto * coupled_var = dynamic_cast&lt;T *&gt;(_coupled_vars[var_name][comp]))
+  auto coupled_vars_it = _coupled_vars.find(var_name);
+  if (coupled_vars_it == _coupled_vars.end())
+    mooseError(&quot;Trying to get a coupled var &quot;, var_name, &quot; that doesn&#x27;t exist&quot;);
+
+  if (auto coupled_var = dynamic_cast&lt;T *&gt;(coupled_vars_it-&gt;second[comp]))
     return coupled_var;
   else
   {
@@ -1228,9 +1310,9 @@ Coupleable::getVarHelper(const std::string &amp; var_name, unsigned int comp)
 }
 
 template &lt;typename T, typename std::enable_if&lt;!HasMemberType_OutputShape&lt;T&gt;::value, int&gt;::type&gt;
-MooseVariableFE&lt;T&gt; *
-Coupleable::getVarHelper(const std::string &amp; var_name, unsigned int comp)
+const MooseVariableFE&lt;T&gt; *
+Coupleable::getVarHelper(const std::string &amp; var_name, unsigned int comp) const
 {
   return getVarHelper&lt;MooseVariableFE&lt;T&gt;&gt;(var_name, comp);
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></section></section></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#96b00f70-6565-454e-9541-2fb8fd9db381" class="tooltipped" data-position="left" data-tooltip="Optional Coupling">Optional Coupling</a></li><li><a href="#a6543d09-d103-4324-9da0-5c05d0aa2829" class="tooltipped" data-position="left" data-tooltip="Coupling of Vectors of Variables">Coupling of Vectors of Variables</a></li><li><a href="#d48dd63d-ff1b-4dcf-a177-3178d9cd8298" class="tooltipped" data-position="left" data-tooltip="Defaults for Coupling of Vectors of Variables">Defaults for Coupling of Vectors of Variables</a></li><li><a href="#f7df5950-e99a-41e5-a6eb-c1491493fea9" class="tooltipped" data-position="left" data-tooltip="Coupled Solution DOFs">Coupled Solution DOFs</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></section></section></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#62621a62-1d66-4836-a2ee-e1c1d2495b28" class="tooltipped" data-position="left" data-tooltip="Optional Coupling">Optional Coupling</a></li><li><a href="#9b71e2c1-8789-40af-b89e-ac1ba8c831bb" class="tooltipped" data-position="left" data-tooltip="Coupling of Vectors of Variables">Coupling of Vectors of Variables</a></li><li><a href="#1e76833b-e647-4ae1-8045-80adf8803b0b" class="tooltipped" data-position="left" data-tooltip="Defaults for Coupling of Vectors of Variables">Defaults for Coupling of Vectors of Variables</a></li><li><a href="#4bbbabc1-0b9d-48e4-99a9-b638e6b57a13" class="tooltipped" data-position="left" data-tooltip="Coupled Solution DOFs">Coupled Solution DOFs</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
