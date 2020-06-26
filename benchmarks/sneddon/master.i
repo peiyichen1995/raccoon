@@ -1,18 +1,30 @@
-E = 2.1e5
-nu = 0.3
-Gc = 2.7
-l = 0.015
-psic = 14.88
-k = 1e-09
-dc = 0.6
+E = 1
+nu = 0
+Gc = 1e-3
+l = 0.1
+psic = 0
+k = 1e-6
+dc = 1
 
 [Problem]
   solve = false
 []
 
 [Mesh]
-  type = FileMesh
-  file = 'gold/geo.msh'
+ [./gmg]
+  type = GeneratedMeshGenerator
+  dim = 1
+  nx = 10000
+  xmin = -5
+  xmax = 5
+ [../]
+ [./middle_nodes]
+  type = BoundingBoxNodeSetGenerator
+  input = 'gmg'
+  new_boundary = middle_nodes
+  bottom_left = '-0.001 0 0'
+  top_right = '0.001 0 0'
+ [../]
 []
 
 [MultiApps]
@@ -62,26 +74,26 @@ dc = 0.6
   [../]
 []
 
-[ICs]
-  [./d]
-    type = CohesiveDamageIC
-    variable = d
-    d0 = 1.0
-    l = ${l}
-    x1 = -0.5
-    y1 = 0
-    z1 = 0
-    x2 = 0
-    y2 = 0
-    z2 = 0
-  [../]
-[]
+# [ICs]
+#   [./d]
+#     type = BrittleDamageIC
+#     variable = d
+#     d0 = 1.0
+#     l = ${l}
+#     x1 = 0
+#     y1 = 0
+#     z1 = 0
+#     x2 = 0
+#     y2 = 0
+#     z2 = 0
+#   [../]
+# []
 
 [AuxScalarKernels]
   [./load]
     type = FunctionScalarAux
     variable = 'load'
-    function = 't'
+    function = '0'
     execute_on = 'INITIAL TIMESTEP_BEGIN'
   [../]
 []
@@ -89,5 +101,5 @@ dc = 0.6
 [Executioner]
   type = Transient
   dt = 1e-4
-  end_time = 6e-3
+  end_time = 2e-4
 []

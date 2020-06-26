@@ -1,6 +1,6 @@
 E = 1
 nu = 0
-Gc = 1
+Gc = 1e-2
 l = 0.1
 psic = 0
 k = 1e-6
@@ -22,7 +22,7 @@ dc = 1
  [./gmg]
   type = GeneratedMeshGenerator
   dim = 1
-  nx = 4000
+  nx = 10000
   xmin = -5
   xmax = 5
  [../]
@@ -216,7 +216,7 @@ dc = 1
 []
 
 [Outputs]
-  print_linear_residuals = false
+  print_linear_residuals = true
   [./exodus]
     type = Exodus
     file_base = 'visualize'

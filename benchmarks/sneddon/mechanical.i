@@ -23,6 +23,13 @@
     source_variable = 'd_ref'
     variable = 'd_ref'
   [../]
+  [./send_disp_x]
+    type = MultiAppCopyTransfer
+    multi_app = fracture
+    direction = to_multiapp
+    source_variable = 'disp_x'
+    variable = 'disp_x'
+  [../]
   [./get_d]
     type = MultiAppCopyTransfer
     multi_app = fracture
@@ -33,14 +40,24 @@
 []
 
 [Mesh]
-  type = FileMesh
-  file = 'gold/geo.msh'
+ [./gmg]
+  type = GeneratedMeshGenerator
+  dim = 1
+  nx = 10000
+  xmin = -5
+  xmax = 5
+ [../]
+ [./middle_nodes]
+  type = BoundingBoxNodeSetGenerator
+  input = 'gmg'
+  new_boundary = middle_nodes
+  bottom_left = '-0.001 0 0'
+  top_right = '0.001 0 0'
+ [../]
 []
 
 [Variables]
   [./disp_x]
-  [../]
-  [./disp_y]
   [../]
 []
 
@@ -60,6 +77,17 @@
   [../]
 []
 
+[UserObjects]
+  [./E_driving]
+    type = ADFPIMaterialPropertyUserObject
+    mat_prop = 'E_el_active'
+  [../]
+  [./pressure_uo]
+    type = ADFPIMaterialPropertyUserObject
+    mat_prop = 'p'
+  [../]
+[]
+
 [AuxKernels]
   [./E_el]
     type = ADMaterialRealAux
@@ -74,39 +102,32 @@
     type = ADStressDivergenceTensors
     variable = 'disp_x'
     component = 0
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
-  [./solid_y]
-    type = ADStressDivergenceTensors
-    variable = 'disp_y'
-    component = 1
-    displacements = 'disp_x disp_y'
-    save_in = 'fy'
+  [./pressure_body_force_x]
+    type = ADPressurizedCrack
+    variable = 'disp_x'
+    d = 'd'
+    pressure_mat = 'p'
+    component = 0
   [../]
 []
 
 [BCs]
-  [./ydisp]
-    type = ScalarDirichletBC
-    variable = 'disp_y'
-    boundary = 'top'
-    scalar_var = 'load'
-  [../]
   [./xfix]
     type = DirichletBC
     variable = 'disp_x'
-    boundary = 'top bottom'
-    value = 0
-  [../]
-  [./yfix]
-    type = DirichletBC
-    variable = 'disp_y'
-    boundary = 'bottom'
+    boundary = 'left right'
     value = 0
   [../]
 []
 
 [Materials]
+  [./pressure]
+    type = ADGenericFunctionMaterial
+    prop_names = 'p'
+    prop_values = '1e-2'
+  [../]
   [./elasticity_tensor]
     type = ADComputeIsotropicElasticityTensor
     youngs_modulus = ${E}
@@ -114,29 +135,29 @@
   [../]
   [./strain]
     type = ADComputeSmallStrain
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
   [./stress]
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
     d = 'd'
     d_crit = ${dc}
   [../]
-  [./fracture_properties]
+  [./bulk]
     type = GenericFunctionMaterial
     prop_names = 'energy_release_rate phase_field_regularization_length critical_fracture_energy'
     prop_values = '${Gc} ${l} ${psic}'
   [../]
   [./local_dissipation]
-    type = LinearLocalDissipation
-    d = d
+    type = QuadraticLocalDissipation
+    d = 'd'
   [../]
-  [./phase_field_properties]
+  [./fracture_properties]
     type = FractureMaterial
-    local_dissipation_norm = 8/3
+    local_dissipation_norm = 2
   [../]
   [./degradation]
-    type = LorentzDegradation
-    d = d
+    type = QuadraticDegradation
+    d = 'd'
     residual_degradation = ${k}
   [../]
 []
@@ -155,13 +176,13 @@
   compute_scaling_once = false
 []
 
-[Postprocessors]
-  [./Fy]
-    type = NodalSum
-    variable = 'fy'
-    boundary = 'top'
-  [../]
-[]
+# [Postprocessors]
+#   [./Fy]
+#     type = NodalSum
+#     variable = 'fy'
+#     boundary = 'top'
+#   [../]
+# []
 
 [Outputs]
   print_linear_residuals = false
@@ -177,6 +198,6 @@
   [../]
   [./console]
     type = Console
-    hide = 'load Fy'
+    hide = 'load'
   [../]
 []
