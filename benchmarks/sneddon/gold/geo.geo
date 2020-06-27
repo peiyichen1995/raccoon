@@ -23,7 +23,7 @@ Line(7) = {6, 7};
 Line(8) = {7, 2};
 
 Line Loop(1) = {1, 2, 3, 4};
-//Line Loop(2) = {5, 6, 7, 8} 
+//Line Loop(2) = {5, 6, 7, 8}
 
 
 Plane Surface(1) = {1};

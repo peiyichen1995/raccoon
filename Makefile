@@ -20,7 +20,7 @@ include $(FRAMEWORK_DIR)/build.mk
 include $(FRAMEWORK_DIR)/moose.mk
 
 # Make sure no warnings are permitted
-ADDITIONAL_CPPFLAGS=-Wall -Wextra -Werror
+ADDITIONAL_CPPFLAGS += -Wall -Wextra -Werror
 
 ################################## MODULES ####################################
 # To use certain physics included with MOOSE, set variables below to
@@ -35,7 +35,7 @@ FLUID_PROPERTIES    := no
 HEAT_CONDUCTION     := yes
 MISC                := no
 NAVIER_STOKES       := no
-PHASE_FIELD         := no
+PHASE_FIELD         := yes
 RDG                 := no
 RICHARDS            := no
 SOLID_MECHANICS     := no

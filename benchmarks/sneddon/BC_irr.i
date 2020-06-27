@@ -1,6 +1,6 @@
 E = 1
-nu = 0.2
-Gc = 1
+nu = 0
+Gc = 1e-2
 l = 0.1
 psic = 0
 k = 1e-6
@@ -11,14 +11,24 @@ dc = 1
 []
 
 [Mesh]
-  type = FileMesh
-  file = 'gold/geo.msh'
+ [./gmg]
+  type = GeneratedMeshGenerator
+  dim = 1
+  nx = 10000
+  xmin = -5
+  xmax = 5
+ [../]
+ [./middle_nodes]
+  type = BoundingBoxNodeSetGenerator
+  input = 'gmg'
+  new_boundary = middle_nodes
+  bottom_left = '-0.001 0 0'
+  top_right = '0.001 0 0'
+ [../]
 []
 
 [Variables]
   [./disp_x]
-  [../]
-  [./disp_y]
   [../]
   [./d]
   [../]
@@ -37,6 +47,10 @@ dc = 1
   [./pressure_uo]
     type = ADFPIMaterialPropertyUserObject
     mat_prop = 'p'
+  [../]
+  [./g]
+    type = ADFPIMaterialPropertyUserObject
+    mat_prop = 'g'
   [../]
 []
 
@@ -61,13 +75,7 @@ dc = 1
     type = ADStressDivergenceTensors
     variable = 'disp_x'
     component = 0
-    displacements = 'disp_x disp_y'
-  [../]
-  [./solid_y]
-    type = ADStressDivergenceTensors
-    variable = 'disp_y'
-    component = 1
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
   [./pressure_body_force_x]
     type = ADPressurizedCrack
@@ -75,13 +83,6 @@ dc = 1
     d = 'd'
     pressure_mat = 'p'
     component = 0
-  [../]
-  [./pressure_body_force_y]
-    type = ADPressurizedCrack
-    variable = 'disp_y'
-    d = 'd'
-    pressure_mat = 'p'
-    component = 1
   [../]
   [./pff_diff]
     type = ADPFFDiffusion
@@ -101,7 +102,7 @@ dc = 1
     type = ADPFFPressure
     variable = 'd'
     pressure_uo = 'pressure_uo'
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
 []
 
@@ -109,37 +110,38 @@ dc = 1
   [./xfix]
     type = DirichletBC
     variable = 'disp_x'
-    boundary = 'top bottom left right'
+    boundary = 'left right'
     value = 0
   [../]
-  [./yfix]
+  [./damage]
     type = DirichletBC
-    variable = 'disp_y'
-    boundary = 'top bottom left right'
-    value = 0
+    variable = 'd'
+    boundary = 'middle_nodes'
+    value = 1
   [../]
 []
 
-[ICs]
-  [./d]
-    type = BrittleDamageIC
-    variable = d
-    d0 = 1.0
-    l = ${l}
-    x1 = -0.2
-    y1 = 0
-    z1 = 0
-    x2 = 0.2
-    y2 = 0
-    z2 = 0
-  [../]
-[]
+# [ICs]
+#   [./d]
+#     type = BrittleDamageIC
+#     variable = d
+#     d0 = 1.0
+#     l = ${l}
+#     bandwidth_multiplier = 50
+#     x1 = 0
+#     y1 = 0
+#     z1 = 0
+#     x2 = 0
+#     y2 = 0
+#     z2 = 0
+#   [../]
+# []
 
 [Materials]
   [./pressure]
     type = ADGenericFunctionMaterial
     prop_names = 'p'
-    prop_values = '1e-3'
+    prop_values = '1e-2'
   [../]
   [./elasticity_tensor]
     type = ADComputeIsotropicElasticityTensor
@@ -148,15 +150,12 @@ dc = 1
   [../]
   [./strain]
     type = ADComputeSmallStrain
-    displacements = 'disp_x disp_y'
+    displacements = 'disp_x'
   [../]
   [./stress]
-<<<<<<< HEAD
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
-=======
-    type = SmallStrainDegradedElasticPK2Stress_NoSplit
->>>>>>> devel
     d = 'd'
+    degradation_uo = 'g'
     d_crit = ${dc}
   [../]
   [./bulk]
@@ -177,32 +176,45 @@ dc = 1
     d = 'd'
     residual_degradation = ${k}
   [../]
+  [./elastic_energy]
+    type = ElasticEnergyDensity
+  [../]
 []
 
 [Executioner]
   type = FixedPointTransient
   solve_type = 'NEWTON'
+
+  line_search = none
+
   petsc_options_iname = '-pc_type -sub_pc_type -ksp_max_it -ksp_gmres_restart -sub_pc_factor_levels -snes_type'
-  petsc_options_value = 'asm      ilu          200         200                0                     vinewtonrsls'
+  petsc_options_value = 'asm      ilu          1000        200                0                     vinewtonrsls'
   dt = 1e-4
   end_time = 2e-4
 
-  nl_abs_tol = 1e-08
-  nl_rel_tol = 1e-06
+  nl_abs_tol = 1e-10
+  nl_rel_tol = 1e-08
+  nl_max_its = 1000
 
   automatic_scaling = true
-  compute_scaling_once = false
 
   fp_max_its = 100
   fp_tol = 1e-06
   accept_on_max_fp_iteration = true
 []
 
+[Postprocessors]
+  [./fracture_energy]
+    type = FractureEnergy
+    d = d
+  [../]
+[]
+
 [Outputs]
   print_linear_residuals = false
   [./exodus]
     type = Exodus
-    file_base = 'visualize'
+    file_base = 'BC_irr'
   [../]
   [./console]
     type = Console
