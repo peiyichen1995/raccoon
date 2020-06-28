@@ -50,8 +50,11 @@ ADDegradedElasticStressBase::ADDegradedElasticStressBase(const InputParameters &
     mooseError("no degradation provided.");
 
   /// degradation should not be multiply defined
-  if ((provided_by_mat ? 1 : 0) + (provided_by_uo ? 1 : 0) > 1)
+  if ((provided_by_mat ? 1 : 0) + (provided_by_uo ? 1 : 0) > 1) {
+    std::cout<<"mat "<< provided_by_mat<<std::endl;
+    std::cout<<"uo "<<provided_by_uo<<std::endl;
     mooseError("degradation multiply defined.");
+  }
 }
 
 ADReal

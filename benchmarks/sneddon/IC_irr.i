@@ -1,6 +1,6 @@
 E = 1
 nu = 0
-Gc = 1e-2
+Gc = 1e-3
 l = 0.1
 psic = 0
 k = 1e-6
@@ -127,7 +127,7 @@ dc = 1
     variable = d
     d0 = 1.0
     l = ${l}
-    bandwidth_multiplier = 50
+    bandwidth_multiplier = 10
     x1 = 0
     y1 = 0
     z1 = 0
@@ -155,6 +155,7 @@ dc = 1
   [./stress]
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
     d = 'd'
+    degradation_name = ""
     degradation_uo = 'g'
     d_crit = ${dc}
   [../]
@@ -204,6 +205,12 @@ dc = 1
 []
 
 [Postprocessors]
+  [./helmholtz_energy]
+    type = HelmholtzEnergy
+    d = d
+    pressure_mat = 'p'
+    fracture_energy_name = 'fracture_energy'
+  [../]
   [./fracture_energy]
     type = FractureEnergy
     d = d
