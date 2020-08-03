@@ -12,6 +12,21 @@
 
 #include "metaphysicl/raw_type.h"
 
+TEST(TensorTest, RankFourTensorBug)
+{
+  RankFourTensor A(RankFourTensor::initIdentitySymmetricFour);
+  std::cout << "A = " << std::endl;
+  A.print();
+
+  RankFourTensor B = 1 / 2 * A;
+  std::cout << "B = " << std::endl;
+  B.print();
+
+  RankFourTensor C = A / 2;
+  std::cout << "C = " << std::endl;
+  C.print();
+}
+
 TEST(TensorTest, inverse)
 {
   RankFourTensor C;
