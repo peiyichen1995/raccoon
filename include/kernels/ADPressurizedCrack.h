@@ -20,4 +20,6 @@ protected:
   const ADMaterialProperty<Real> * _p_mat;
   const ADVariableValue * _p_var;
   const ADVariableGradient & _grad_d;
+  const VariableGradient & _grad_d_old;
+  const bool _lag;
 };

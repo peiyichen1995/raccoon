@@ -1,7 +1,7 @@
 E = 1
 nu = 0.2
 Gc = 1
-l = 0.1
+l = 0.04
 psic = 0
 k = 1e-6
 dc = 1
@@ -12,7 +12,7 @@ dc = 1
 
 [Mesh]
   type = FileMesh
-  file = 'gold/geo.msh'
+  file = 'gold/1e-3/geo.msh'
 []
 
 [Variables]
@@ -37,6 +37,10 @@ dc = 1
   [./pressure_uo]
     type = ADFPIMaterialPropertyUserObject
     mat_prop = 'p'
+  [../]
+  [./g]
+    type = ADFPIMaterialPropertyUserObject
+    mat_prop = 'g'
   [../]
 []
 
@@ -75,6 +79,7 @@ dc = 1
     d = 'd'
     pressure_mat = 'p'
     component = 0
+    lag = true
   [../]
   [./pressure_body_force_y]
     type = ADPressurizedCrack
@@ -82,6 +87,7 @@ dc = 1
     d = 'd'
     pressure_mat = 'p'
     component = 1
+    lag = true
   [../]
   [./pff_diff]
     type = ADPFFDiffusion
@@ -102,6 +108,7 @@ dc = 1
     variable = 'd'
     pressure_uo = 'pressure_uo'
     displacements = 'disp_x disp_y'
+    lag = true
   [../]
 []
 
@@ -126,6 +133,7 @@ dc = 1
     variable = d
     d0 = 1.0
     l = ${l}
+    bandwidth_multiplier = 100
     x1 = -0.2
     y1 = 0
     z1 = 0
@@ -151,13 +159,10 @@ dc = 1
     displacements = 'disp_x disp_y'
   [../]
   [./stress]
-<<<<<<< HEAD
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
-=======
-    type = SmallStrainDegradedElasticPK2Stress_NoSplit
->>>>>>> devel
     d = 'd'
     d_crit = ${dc}
+    degradation_uo = 'g'
   [../]
   [./bulk]
     type = GenericConstantMaterial
@@ -187,8 +192,9 @@ dc = 1
   dt = 1e-4
   end_time = 2e-4
 
-  nl_abs_tol = 1e-08
-  nl_rel_tol = 1e-06
+  nl_abs_tol = 1e-12
+  nl_rel_tol = 1e-12
+  nl_max_its = 150
 
   automatic_scaling = true
   compute_scaling_once = false

@@ -17,8 +17,12 @@ ADPFFReaction::validParams()
   params.addCoupledVar("driving_energy_var", "auxiliary variable that holds the driving energy");
   params.addParam<UserObjectName>("driving_energy_uo",
                                   "userobject that has driving energy values at qps");
+  params.addParam<MaterialPropertyName>("critical_fracture_energy_name",
+                                        "critical_fracture_energy", "critical fracture energy");
   params.addParam<bool>(
       "lag", false, "whether we should use last step's driving energy to improve convergence");
+  params.addParam<bool>(
+      "energy_threshold", false, "whether we should have a threshold for the active strain energy");
   return params;
 }
 
@@ -27,6 +31,7 @@ ADPFFReaction::ADPFFReaction(const InputParameters & parameters)
     _dg_dd(getADMaterialProperty<Real>(derivativePropertyNameFirst(
         getParam<MaterialPropertyName>("degradation_name"), _var.name()))),
     _lag(getParam<bool>("lag")),
+    _threshold_bool(getParam<bool>("energy_threshold")),
     _D_mat(isParamValid("driving_energy_mat") && !_lag
                ? &getADMaterialProperty<Real>("driving_energy_mat")
                : nullptr),
@@ -39,7 +44,8 @@ ADPFFReaction::ADPFFReaction(const InputParameters & parameters)
                                                           : nullptr),
     _D_uo(isParamValid("driving_energy_uo")
               ? &getUserObject<ADMaterialPropertyUserObject>("driving_energy_uo")
-              : nullptr)
+              : nullptr),
+    _Dmin(getMaterialProperty<Real>("critical_fracture_energy_name"))
 {
   bool provided_by_mat = _D_mat || _D_mat_old;
   bool provided_by_var = _D_var || _D_var_old;
@@ -58,6 +64,7 @@ ADReal
 ADPFFReaction::precomputeQpResidual()
 {
   ADReal D;
+  ADReal Dmin = _Dmin[_qp];
   if (_D_var)
     D = (*_D_var)[_qp];
   else if (_D_mat)
@@ -70,5 +77,10 @@ ADPFFReaction::precomputeQpResidual()
     mooseError("Internal Error");
 
   // reaction like driving force
-  return _dg_dd[_qp] * D;
+  if (D > Dmin || !_threshold_bool) {
+    return _dg_dd[_qp] * D;
+  }
+  else {
+    return _dg_dd[_qp] * Dmin;
+  }
 }

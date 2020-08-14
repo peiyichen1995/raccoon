@@ -30,17 +30,19 @@ ADDegradedElasticStressBase::ADDegradedElasticStressBase(const InputParameters &
     _grad_d(adCoupledGradient("d")),
     _d_crit(getParam<Real>("d_crit")),
     _g_mat(isParamValid("degradation_mat") ? &getADMaterialProperty<Real>("degradation_mat")
-                                           : &getADMaterialProperty<Real>("degradation_name")),
+                                           : nullptr),
     _g_uo(isParamValid("degradation_uo")
               ? &getUserObject<ADMaterialPropertyUserObject>("degradation_uo")
               : nullptr),
     _E_el_name(getParam<MaterialPropertyName>("elastic_energy_name")),
     _E_el_active(declareADProperty<Real>(_E_el_name + "_active"))
 {
-  if (parameters.isParamSetByUser("degradation_name"))
+
+  if (!_g_mat && !_g_uo)
+  {
+    _g_mat = &getADMaterialProperty<Real>("degradation_name");
     mooseDeprecated("degradation_name is deprecated in favor of degradation_mat.");
-  if (!_g_uo && parameters.isParamSetByAddParam("degradation_name"))
-    mooseDeprecated("degradation_name is deprecated in favor of degradation_mat.");
+  }
 
   bool provided_by_mat = _g_mat;
   bool provided_by_uo = _g_uo;
@@ -50,11 +52,10 @@ ADDegradedElasticStressBase::ADDegradedElasticStressBase(const InputParameters &
     mooseError("no degradation provided.");
 
   /// degradation should not be multiply defined
-  if ((provided_by_mat ? 1 : 0) + (provided_by_uo ? 1 : 0) > 1) {
-    std::cout<<"mat "<< provided_by_mat<<std::endl;
-    std::cout<<"uo "<<provided_by_uo<<std::endl;
+
+  if ((provided_by_mat ? 1 : 0) + (provided_by_uo ? 1 : 0) > 1)
     mooseError("degradation multiply defined.");
-  }
+
 }
 
 ADReal

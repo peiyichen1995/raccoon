@@ -19,4 +19,6 @@ protected:
   const ADMaterialPropertyUserObject & _p_uo;
   const unsigned int _ndisp;
   std::vector<const ADVariableValue *> _disp;
+  std::vector<const VariableValue *> _disp_old;
+  const bool _lag;
 };

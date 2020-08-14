@@ -1,6 +1,6 @@
 E = 1
 nu = 0
-Gc = 1e-3
+Gc = 1
 l = 0.1
 psic = 0
 k = 1e-6
@@ -155,7 +155,6 @@ dc = 1
   [./stress]
     type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
     d = 'd'
-    degradation_name = ""
     degradation_uo = 'g'
     d_crit = ${dc}
   [../]

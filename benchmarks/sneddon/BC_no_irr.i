@@ -1,6 +1,6 @@
 E = 1
 nu = 0
-Gc = 1e-3
+Gc = 1
 l = 0.1
 psic = 0
 k = 1e-6
@@ -83,6 +83,7 @@ dc = 1
     d = 'd'
     pressure_mat = 'p'
     component = 0
+    lag = true
   [../]
   [./pff_diff]
     type = ADPFFDiffusion
@@ -103,6 +104,7 @@ dc = 1
     variable = 'd'
     pressure_uo = 'pressure_uo'
     displacements = 'disp_x'
+    lag = true
   [../]
 []
 
@@ -153,7 +155,8 @@ dc = 1
     displacements = 'disp_x'
   [../]
   [./stress]
-    type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
+    # type = SmallStrainDegradedElasticPK2Stress_StrainSpectral
+    type = SmallStrainDegradedElasticPK2Stress_NoSplit
     d = 'd'
     degradation_uo = 'g'
     d_crit = ${dc}
@@ -172,7 +175,7 @@ dc = 1
     local_dissipation_norm = 2
   [../]
   [./degradation]
-    type = QuadraticDegradation
+    type = NoDegradation
     d = 'd'
     residual_degradation = ${k}
   [../]
@@ -188,7 +191,7 @@ dc = 1
   line_search = none
 
   petsc_options_iname = '-pc_type -sub_pc_type -ksp_max_it -ksp_gmres_restart -sub_pc_factor_levels -snes_type'
-  petsc_options_value = 'asm      ilu          1000        200                0                     vinewtonrsls'
+  petsc_options_value = 'lu      ilu          1000        200                0                     vinewtonrsls'
   dt = 1e-4
   end_time = 2e-4
 
@@ -217,7 +220,7 @@ dc = 1
 []
 
 [Outputs]
-  print_linear_residuals = false
+  print_linear_residuals = true
   [./exodus]
     type = Exodus
     file_base = 'BC_no_irr'

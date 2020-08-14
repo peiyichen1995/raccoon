@@ -21,9 +21,11 @@ protected:
   /// name of the degradation function
   const ADMaterialProperty<Real> & _dg_dd;
   const bool _lag;
+  const bool _threshold_bool;
   const ADMaterialProperty<Real> * _D_mat;
   const MaterialProperty<Real> * _D_mat_old;
   const ADVariableValue * _D_var;
   const VariableValue * _D_var_old;
   const ADMaterialPropertyUserObject * _D_uo;
+  const MaterialProperty<Real> & _Dmin;
 };
