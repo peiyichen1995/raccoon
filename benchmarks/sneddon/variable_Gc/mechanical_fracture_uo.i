@@ -167,8 +167,8 @@ dc = 1
   [../]
   [./bulk]
     type = GenericConstantMaterial
-    prop_names = 'phase_field_regularization_length energy_release_rate critical_fracture_energy'
-    prop_values = '${l} ${Gc} ${psic}'
+    prop_names = 'phase_field_regularization_length critical_fracture_energy'
+    prop_values = '${l} ${psic}'
   [../]
   [./local_dissipation]
     type = QuadraticLocalDissipation
@@ -182,6 +182,11 @@ dc = 1
     type = QuadraticDegradation
     d = 'd'
     residual_degradation = ${k}
+  [../]
+  [./Gc_function]
+    type = GenericFunctionMaterial
+    prop_names = 'energy_release_rate'
+    prop_values = '${Gc}*(1+x^2)'
   [../]
 []
 
