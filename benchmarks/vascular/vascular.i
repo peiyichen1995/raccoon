@@ -5,7 +5,7 @@
     use_for_exodus_restart = true
   []
   [pin]
-    type = AddExtraNodeset
+    type = ExtraNodesetGenerator
     input = fmg
     new_boundary = 'pin'
     nodes = '79229'
