@@ -8,7 +8,7 @@
     type = ExtraNodesetGenerator
     input = fmg
     new_boundary = 'pin'
-    nodes = '79229'
+    nodes = '267652'
   []
   second_order = true
 []
@@ -90,7 +90,7 @@
     type = DirichletBC
     variable = 'disp_x'
     value = 0
-    boundary = 'pin'
+    boundary = '1'
   []
   [yfix]
     type = DirichletBC
