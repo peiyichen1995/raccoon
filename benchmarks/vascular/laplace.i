@@ -1,6 +1,7 @@
 [Mesh]
   type = FileMesh
   file = 'gold/media_flatboundaries.msh'
+  second_order = true
 []
 
 [Variables]
