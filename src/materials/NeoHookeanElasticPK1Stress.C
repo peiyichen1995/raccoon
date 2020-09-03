@@ -92,13 +92,19 @@ NeoHookeanElasticPK1Stress::computeQpStress(ADReal pressure)
   ADRankTwoTensor S_vol = pressure * J * _C[_qp].inverse();
 
   /// tissue stress
-  ADReal e1 = (_C[_qp] * _M1[_qp]).trace() - 1;
-  ADReal e2 = (_C[_qp] * _M2[_qp]).trace() - 1;
-  ADReal e1pos = e1 > 0 ? e1 : 0;
-  ADReal e2pos = e2 > 0 ? e2 : 0;
+  ADReal e1 = _C[_qp].doubleContraction(_M1[_qp]) - 1;
+  ADReal e2 = _C[_qp].doubleContraction(_M2[_qp]) - 1;
+  // ADReal e1pos = e1 > 0 ? e1 : 0;
+  // ADReal e2pos = e2 > 0 ? e2 : 0;
+  //
+  ADReal e1pos = e1;
+  ADReal e2pos = e2;
+
+
   ADRankTwoTensor S_ti_1 = 4 * _mu4[_qp] * e1pos * std::exp(_beta4[_qp] * e1pos * e1pos) * _M1[_qp];
   ADRankTwoTensor S_ti_2 = 4 * _mu4[_qp] * e2pos * std::exp(_beta4[_qp] * e2pos * e2pos) * _M2[_qp];
 
+  // _stress[_qp] = _F[_qp] * (S_isc + S_vol + S_ti_1 + S_ti_2);
   _stress[_qp] = _F[_qp] * (S_isc + S_vol + S_ti_1 + S_ti_2);
 
   _cauchy_stress[_qp] = _stress[_qp] * _F[_qp].transpose() / J;
