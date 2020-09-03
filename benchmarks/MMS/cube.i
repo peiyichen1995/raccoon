@@ -2,9 +2,9 @@
   type = GeneratedMesh
   elem_type = TET10
   dim = 3
-  nx = 16
-  ny = 16
-  nz = 16
+  nx = 32
+  ny = 32
+  nz = 32
   second_order = true
 []
 
