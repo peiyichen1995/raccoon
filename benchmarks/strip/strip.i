@@ -1,22 +1,6 @@
-# [Mesh]
-#   type = GeneratedMesh
-#   elem_type = TET10
-#   dim = 3
-#   xmin = 0
-#   xmax = 10
-#   ymin = 0
-#   ymax = 3
-#   zmin = 0
-#   zmax = 0.5
-#   nx = 4
-#   ny = 2
-#   nz = 1
-#   second_order = true
-# []
-
 [Mesh]
   type = FileMesh
-  file = 'fields.e'
+  file = 'fields/fields_${L}.e'
   second_order = true
 []
 
@@ -38,30 +22,31 @@
   []
   [mu1]
     initial_from_file_var = 'mu1'
+    initial_from_file_timestep = ${sample}
   []
   [mu2]
     initial_from_file_var = 'mu2'
+    initial_from_file_timestep = ${sample}
   []
   [mu3]
     initial_from_file_var = 'mu3'
+    initial_from_file_timestep = ${sample}
   []
   [mu4]
     initial_from_file_var = 'mu4'
+    initial_from_file_timestep = ${sample}
   []
   [beta3]
     initial_from_file_var = 'beta3'
+    initial_from_file_timestep = ${sample}
   []
   [beta4]
     initial_from_file_var = 'beta4'
+    initial_from_file_timestep = ${sample}
   []
 []
 
 [Materials]
-  # [props]
-  #   type = GenericConstantMaterial
-  #   prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
-  #   prop_values = '2 1 5 10 2 150'
-  # []
   [mu1]
     type = ParsedMaterial
     f_name = 'mu1'
@@ -201,13 +186,9 @@
 []
 
 [Outputs]
-  [exodus]
-    type = Exodus
-    file_base = 'displacements'
-  []
   [csv]
-      type = CSV
-    file_base = 'stress_xx'
+    type = CSV
+    file_base = 'stress_xx_L_${L}_sample_${sample}'
   []
 []
 

@@ -94,11 +94,8 @@ NeoHookeanElasticPK1Stress::computeQpStress(ADReal pressure)
   /// tissue stress
   ADReal e1 = _C[_qp].doubleContraction(_M1[_qp]) - 1;
   ADReal e2 = _C[_qp].doubleContraction(_M2[_qp]) - 1;
-  // ADReal e1pos = e1 > 0 ? e1 : 0;
-  // ADReal e2pos = e2 > 0 ? e2 : 0;
-  //
-  ADReal e1pos = e1;
-  ADReal e2pos = e2;
+  ADReal e1pos = e1 > 0 ? e1 : 0;
+  ADReal e2pos = e2 > 0 ? e2 : 0;
 
 
   ADRankTwoTensor S_ti_1 = 4 * _mu4[_qp] * e1pos * std::exp(_beta4[_qp] * e1pos * e1pos) * _M1[_qp];
