@@ -1,0 +1,118 @@
+
+
+Framework Information:
+MOOSE Version:           git commit 5f208b5198 on 2020-07-23
+LibMesh Version:         d9738bf11cd8180e0f3e7889a10fbde13409a254
+PETSc Version:           3.13.3
+SLEPc Version:           3.13.3
+Current Time:            Tue Sep 15 22:18:13 2020
+Executable Timestamp:    Thu Sep  3 20:58:00 2020
+
+Parallelism:
+  Num Processors:          10
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 1393
+    Local:                 160
+  Elems:                   
+    Total:                 720
+    Local:                 72
+  Num Subdomains:          1
+  Num Partitions:          10
+  Partitioner:             metis
+
+Nonlinear System:
+  AD size required:        30
+  Num DOFs:                4179
+  Num Local DOFs:          480
+  Variables:               { "disp_x" "disp_y" "disp_z" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "SECOND" 
+
+Auxiliary System:
+  Num DOFs:                2880
+  Num Local DOFs:          288
+  Variables:               "stress_xx" 
+  Finite Element Types:    "MONOMIAL" 
+  Approximation Orders:    "FIRST" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             ConstantDT
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP (auto)
+
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy material output option: material properties are output only on TIMESTEP_END, not INITIAL. To remove this message, set 'use_legacy_material_output' to false in this application. If there are gold output files that contain material property output for which output occurs on INITIAL, then these will generate diffs due to zero values being stored, and these tests should be re-golded.
+[39m
+
+Time Step 0, time = 0
+
+Postprocessor Values:
++----------------+----------------+
+| time           | stress_xx      |
++----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+
+
+
+Time Step 1, time = 1, dt = 1
+
+Performing automatic scaling calculation
+
+ 0 Nonlinear |R| = [32m5.744563e-01[39m
+      0 Linear |R| = [32m5.744563e-01[39m
+      1 Linear |R| = [32m5.418376e-16[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 1 Nonlinear |R| = [32m2.517110e-03[39m
+      0 Linear |R| = [32m2.517110e-03[39m
+      1 Linear |R| = [32m2.415692e-17[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 2 Nonlinear |R| = [32m4.055478e-05[39m
+      0 Linear |R| = [32m4.055478e-05[39m
+      1 Linear |R| = [32m1.739874e-19[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 3 Nonlinear |R| = [32m2.953301e-08[39m
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+
+| time           | stress_xx      |
++----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |   8.540198e-01 |
++----------------+----------------+
+
+
+Time Step 2, time = 2, dt = 1
+ 0 Nonlinear |R| = [32m5.744563e-01[39m
+      0 Linear |R| = [32m5.744563e-01[39m
+      1 Linear |R| = [32m6.276836e-16[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 1 Nonlinear |R| = [32m2.405765e-04[39m
+      0 Linear |R| = [32m2.405765e-04[39m
+      1 Linear |R| = [32m1.379912e-18[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 2 Nonlinear |R| = [32m2.938812e-06[39m
+      0 Linear |R| = [32m2.938812e-06[39m
+      1 Linear |R| = [32m8.584064e-21[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+ 3 Nonlinear |R| = [32m6.269723e-10[39m
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+
+| time           | stress_xx      |
++----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |   8.540198e-01 |
+|   2.000000e+00 |   1.722644e+00 |
++----------------+----------------+
+
