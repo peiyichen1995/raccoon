@@ -1,14 +1,24 @@
 clear
 
 
-for L = 1:5
-    data = [];
-    for sample = 1:20
-        M = readmatrix(['stress_xx_L_', num2str(L), '_sample_', num2str(sample), '.csv']);
-        data = [data, M(:, 2)];
-    end
-    stretch = (0:30)*0.01+1;
-    lb = min(data, [], 2);
-    ub = max(data, [], 2);
-    writematrix([stretch',lb,ub], ['L_', num2str(L), '_bounds.csv']);
+% for L = 1:5
+%     data = [];
+%     for sample = 1:20
+%         M = readmatrix(['stress_xx_L_', num2str(L), '_sample_', num2str(sample), '.csv']);
+%         data = [data, M(:, 2)];
+%     end
+%     stretch = (0:30)*0.01+1;
+%     lb = min(data, [], 2);
+%     ub = max(data, [], 2);
+%     writematrix([stretch',lb,ub], ['L_', num2str(L), '_bounds.csv']);
+% end
+
+data = [];
+for sample = 1:50
+    M = readmatrix(['stress_xx_sample_', num2str(sample), '.csv']);
+    data = [data, M(:, 2)];
 end
+stretch = (0:30)*0.01+1;
+lb = min(data, [], 2);
+ub = max(data, [], 2);
+writematrix([stretch',lb,ub], ['0.1_bounds.csv']);

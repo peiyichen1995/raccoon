@@ -8,7 +8,7 @@
   xmax = 10
   ymax = 3
   zmax = 0.5
-  nx = 10
+  nx = 15
   ny = 3
   nz = 1
   second_order = true
