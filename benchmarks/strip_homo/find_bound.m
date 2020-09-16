@@ -21,4 +21,4 @@ end
 stretch = (0:30)*0.01+1;
 lb = min(data, [], 2);
 ub = max(data, [], 2);
-writematrix([stretch',lb,ub], ['0.1_bounds.csv']);
+writematrix([stretch',lb,ub], ['0.1_x_refined_bounds.csv']);
