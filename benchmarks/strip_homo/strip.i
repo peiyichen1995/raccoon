@@ -8,9 +8,9 @@
   xmax = 10
   ymax = 3
   zmax = 0.5
-  nx = 20
-  ny = 6
-  nz = 2
+  nx = 10
+  ny = 3
+  nz = 1
   second_order = true
 []
 
