@@ -41,16 +41,16 @@
   [orientation1]
     type = GenericConstantRankTwoTensor
     tensor_name = M1
-    tensor_values = '0.5000    0.5000         0
-    0.5000    0.5000         0
+    tensor_values = '0.4778    0.4995         0
+    0.4995    0.5222         0
          0         0         0'
     # tensor_values = '0.3 0 0 0 0.3 0 0 0 0.4'
   []
   [orientation2]
     type = GenericConstantRankTwoTensor
     tensor_name = M2
-    tensor_values = '0.5000   -0.5000         0
-   -0.5000    0.5000         0
+    tensor_values = '0.4778   -0.4995         0
+   -0.4995    0.5222         0
          0         0         0'
     # tensor_values = '0.3 0 0 0 0.3 0 0 0 0.4'
   []
