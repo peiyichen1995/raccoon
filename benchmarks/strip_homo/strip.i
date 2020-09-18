@@ -8,8 +8,8 @@
   xmax = 10
   ymax = 3
   zmax = 0.5
-  nx = 10
-  ny = 3
+  nx = 40
+  ny = 12
   nz = 1
   second_order = true
 []
@@ -36,7 +36,8 @@
   [props]
     type = GenericConstantMaterial
     prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
-    prop_values = '${g1} ${g2} ${g3} ${g4} 3.6537 500.02'
+    # prop_values = '${g1} ${g2} ${g3} ${g4} 3.6537 500.02'
+    prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
@@ -147,6 +148,7 @@
     type = CSV
     file_base = 'stress_xx_sample_${sample}'
   []
+  exodus = true
 []
 
 [Postprocessors]

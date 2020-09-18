@@ -1,10 +1,11 @@
 clc
 clear
 
-n_samples = 50;
+n_samples = 100;
 
 c1_mean = 259.59;
-c2_mean = 21.343;
+% c2_mean = 21.343;
+c2_mean = 16.1028;
 g4_mean = 19.285;
 
 x_cv = 0.4;
@@ -24,17 +25,31 @@ g4 = gamrnd(a,g4_b,n_samples,1);
 % sample_cv = std(x)/sample_mean;
 eta = 2;
 g1 = 4.1543;
-g2 = 2.5084;
+g2 = 1.5;
 beta3 = 3.6537;
-rho2 = (1-x_cv*x_cv)/(eta*(eta+1)*x_cv*x_cv);
-rho1 = 2*g1/(3^(1.5)*g2);
-u = betarnd(rho1,rho2,[1 n_samples]);
+
+syms rho1 rho2;
+eqn1 = rho1 - 2*g1/3^(1.5)/g2*rho2 == 0;
+eqn2 = x_cv*x_cv - rho2/rho1/(rho1+rho2+1) == 0;
+eqns = [eqn1 eqn2];
+
+S = solve(eqns, [rho1 rho2]);
+
+% rho2 = (1-x_cv*x_cv)/(eta*(eta+1)*x_cv*x_cv);
+% rho1 = 2*g1/(3^(1.5)*g2)*rho2;
+u = betarnd(eval(S.rho1),eval(S.rho2),[1 n_samples]);
 
 fileID = fopen('rn.txt','w');
-
+g1_samples = [];
+g2_samples = [];
+g3_samples = [];
 for i = 1:n_samples
     %     fprintf(fileID,'mpiexec -n 10 ../../raccoon-opt -i strip.i g1=%f g2=%f g3=%f g4=%f sample=%d\n',c2(i)*u(i)/2,3^(-3/2)*c2(i)*(1-u(i)),c1(i)/2/beta3/beta3,g4(i),i);
     fprintf(fileID,'g1=%f g2=%f g3=%f g4=%f sample=%d\n',c2(i)*u(i)/2,3^(-3/2)*c2(i)*(1-u(i)),c1(i)/2/beta3/beta3,g4(i),i);
+    g1_samples = [g1_samples;c2(i)*u(i)/2];
+    g2_samples = [g2_samples;3^(-3/2)*c2(i)*(1-u(i))];
+    g3_samples = [g3_samples;c1(i)/2/beta3/beta3];
+    
 end
 
 fclose(fileID);

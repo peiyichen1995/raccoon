@@ -15,11 +15,17 @@ clear
 % end
 
 data = [];
-for sample = 1:50
+for sample = 1:100
     M = readmatrix(['stress_xx_sample_', num2str(sample), '.csv']);
     data = [data, M(:, 2)];
+    stretch = (0:30)*0.01+1;
+    plot(stretch, M(:, 2),'black');
+    hold on;
 end
 stretch = (0:30)*0.01+1;
 lb = min(data, [], 2);
 ub = max(data, [], 2);
 writematrix([stretch',lb,ub], ['0.4_bounds.csv']);
+
+M = readmatrix(['stress_xx_sample_mean.csv']);
+plot(stretch, M(:, 2),'red');
