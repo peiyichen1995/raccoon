@@ -43,21 +43,21 @@
     # prop_values = '${g1} ${g2} ${g3} 22.8165 ${beta3} 364.1307'
     # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
     # prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
-    prop_values = '10.1075 6.8899 9.7 120.4402 3.6 137.6912'
+    prop_values = '2.2706 3.6132 9.7000 2.8213 3.6000 4.8334'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
     tensor_name = M1
-    tensor_values = '0.4357    0.4958         0
-    0.4958    0.5643         0
+    tensor_values = '0.9570   -0.2028         0
+   -0.2028    0.0430         0
          0         0         0'
     # tensor_values = '0.3 0 0 0 0.3 0 0 0 0.4'
   []
   [orientation2]
     type = GenericConstantRankTwoTensor
     tensor_name = M2
-    tensor_values = '0.4357   -0.4958         0
-   -0.4958    0.5643         0
+    tensor_values = '0.9570    0.2028         0
+    0.2028    0.0430         0
          0         0         0'
     # tensor_values = '0.3 0 0 0 0.3 0 0 0 0.4'
   []
