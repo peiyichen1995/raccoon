@@ -110,20 +110,20 @@
     value = 0
     preset = false
   []
-  [yfix]
-    type = DirichletBC
-    variable = 'disp_y'
-    boundary = 'left right'
-    value = 0
-    preset = false
-  []
-  [zfix]
-    type = DirichletBC
-    variable = 'disp_z'
-    boundary = 'left right'
-    value = 0
-    preset = false
-  []
+  # [yfix]
+  #   type = DirichletBC
+  #   variable = 'disp_y'
+  #   boundary = 'left right'
+  #   value = 0
+  #   preset = false
+  # []
+  # [zfix]
+  #   type = DirichletBC
+  #   variable = 'disp_z'
+  #   boundary = 'left right'
+  #   value = 0
+  #   preset = false
+  # []
   [xrightfix]
     type = FunctionDirichletBC
     variable = 'disp_x'
@@ -147,7 +147,7 @@
   automatic_scaling = true
 
   dt = 1
-  end_time = 28
+  end_time = 29
 []
 
 [Outputs]
