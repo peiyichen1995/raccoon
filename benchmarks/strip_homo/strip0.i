@@ -145,7 +145,7 @@
   automatic_scaling = true
 
   dt = 1
-  end_time = 28
+  end_time = 29
 []
 
 [Outputs]
