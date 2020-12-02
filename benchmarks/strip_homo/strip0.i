@@ -8,9 +8,9 @@
   xmax = 10
   ymax = 3
   zmax = 0.5
-  nx = 40
-  ny = 12
-  nz = 1
+  nx = 50
+  ny = 15
+  nz = 3
   second_order = true
 []
 
@@ -108,20 +108,20 @@
     value = 0
     preset = false
   []
-  # [yfix]
-  #   type = DirichletBC
-  #   variable = 'disp_y'
-  #   boundary = 'left'
-  #   value = 0
-  #   preset = false
-  # []
-  # [zfix]
-  #   type = DirichletBC
-  #   variable = 'disp_z'
-  #   boundary = 'left'
-  #   value = 0
-  #   preset = false
-  # []
+  [yfix]
+    type = DirichletBC
+    variable = 'disp_y'
+    boundary = 'left right'
+    value = 0
+    preset = false
+  []
+  [zfix]
+    type = DirichletBC
+    variable = 'disp_z'
+    boundary = 'left right'
+    value = 0
+    preset = false
+  []
   [xrightfix]
     type = FunctionDirichletBC
     variable = 'disp_x'
@@ -160,7 +160,7 @@
   [stress_xx]
     type = PointValue
     variable = 'stress_xx'
-    point = '10 0 0'
+    point = '5 1.5 0.25'
   []
   [F]
     type = NodalSum
