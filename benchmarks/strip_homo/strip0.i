@@ -12,6 +12,7 @@
   ny = 15
   nz = 3
   second_order = true
+  displacements = 'disp_x disp_y disp_z'
 []
 
 [Variables]
