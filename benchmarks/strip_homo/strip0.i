@@ -113,14 +113,14 @@
   [yfix]
     type = DirichletBC
     variable = 'disp_y'
-    boundary = 'left right'
+    boundary = 'left'
     value = 0
     preset = false
   []
   [zfix]
     type = DirichletBC
     variable = 'disp_z'
-    boundary = 'left right'
+    boundary = 'left'
     value = 0
     preset = false
   []
