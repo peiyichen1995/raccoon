@@ -110,13 +110,13 @@
     value = 0
     preset = false
   []
-  # [yfix]
-  #   type = DirichletBC
-  #   variable = 'disp_y'
-  #   boundary = 'left right'
-  #   value = 0
-  #   preset = false
-  # []
+  [yfix]
+    type = DirichletBC
+    variable = 'disp_y'
+    boundary = 'left right'
+    value = 0
+    preset = false
+  []
   # [zfix]
   #   type = DirichletBC
   #   variable = 'disp_z'
