@@ -121,24 +121,45 @@ plt.show()
 
 # ### For strain enrgy density in terms of F
 
-# In[26]:
+# In[76]:
 
 
 num_step = 1
 file_name = 'stress_xx_sample_def_Data_00'
 
 
-# In[28]:
+# In[79]:
 
+
+data = pd.read_csv('./stress_xx_sample_def_Data_0000.csv')
+features_mean = list(data.columns[5:13])
+defg = data.loc[:,features_mean]
+strain_energy_density = data.loc[:, 'strain_energy_density']
 
 for i in range(num_step):
     if (i+1) < 10:
-        data = pd.read_csv('./data/' + file_name + '0' + str(i+1) + '.csv')
+        data = pd.read_csv('./' + file_name + '0' + str(i+1) + '.csv')
     else:
-        data = pd.read_csv('./data/' + file_name + str(i+1) + '.csv')
+        data = pd.read_csv('./' + file_name + str(i+1) + '.csv')
+
     features_mean = list(data.columns[5:13])
-    defg = data.loc[:,features_mean]
-    strain_energy_density = data.loc[:, 'strain_energy_density']
+    defg = defg.append(data.loc[:,features_mean], ignore_index=True)
+    strain_energy_density = strain_energy_density.append(data.loc[:, 'strain_energy_density'], ignore_index=True)
+
+#     defg=data.loc[:,features_mean]
+#     strain_energy_density=data.loc[:, 'strain_energy_density']
+
+
+# In[81]:
+
+
+strain_energy_density
+
+
+# In[ ]:
+
+
+
 
 
 # In[37]:
@@ -172,4 +193,3 @@ for i in range(len(prediction)):
 
 
 err/sum(simulation)
-
