@@ -133,15 +133,15 @@ file_name = 'stress_xx_sample_def_Data_00'
 
 for i in range(num_step):
     if (i+1) < 10:
-        data = pd.read_csv('./' + file_name + '0' + str(i+1) + '.csv')
+        data = pd.read_csv('./data/' + file_name + '0' + str(i+1) + '.csv')
     else:
-        data = pd.read_csv('./' + file_name + str(i+1) + '.csv')
+        data = pd.read_csv('./data/' + file_name + str(i+1) + '.csv')
     features_mean = list(data.columns[5:13])
     defg = data.loc[:,features_mean]
     strain_energy_density = data.loc[:, 'strain_energy_density']
 
 
-# In[ ]:
+# In[37]:
 
 
 model = keras.Sequential()
@@ -153,8 +153,23 @@ model.compile(loss='mse', optimizer="adam")
 model.fit(defg.to_numpy().reshape(-1,8), strain_energy_density.to_numpy(), epochs=10000, verbose=1)
 
 
-# In[35]:
+# In[39]:
 
 
-_, accuracy = model.evaluate(defg.to_numpy().reshape(-1,8), strain_energy_density.to_numpy())
-print(accuracy)
+prediction = model.predict(defg.to_numpy().reshape(-1,8))
+
+
+# In[52]:
+
+
+err = 0
+simulation = strain_energy_density.to_numpy()
+for i in range(len(prediction)):
+    err = err + abs(prediction[i][0] - simulation[i])
+
+
+# In[54]:
+
+
+err/sum(simulation)
+
