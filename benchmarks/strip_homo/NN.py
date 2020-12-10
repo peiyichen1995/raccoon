@@ -191,5 +191,5 @@ for i in range(len(prediction)):
 
 # In[54]:
 
-
-err/sum(simulation)
+print('error:\n')
+print(err/sum(simulation))
