@@ -34,6 +34,36 @@
   [f]
     order = SECOND
   []
+  [F11]
+    family = MONOMIAL
+  []
+  [F12]
+    family = MONOMIAL
+  []
+  [F13]
+    family = MONOMIAL
+  []
+  [F21]
+    family = MONOMIAL
+  []
+  [F22]
+    family = MONOMIAL
+  []
+  [F23]
+    family = MONOMIAL
+  []
+  [F31]
+    family = MONOMIAL
+  []
+  [F32]
+    family = MONOMIAL
+  []
+  [F33]
+    family = MONOMIAL
+  []
+  [strain_energy_density]
+    family = MONOMIAL
+  []
 []
 
 [Materials]
@@ -100,6 +130,74 @@
     index_i = 0
     index_j = 0
   []
+  [F11]
+    type = ADRankTwoAux
+    variable = 'F11'
+    rank_two_tensor = deformation_gradient
+    index_i = 0
+    index_j = 0
+  []
+  [F12]
+    type = ADRankTwoAux
+    variable = 'F12'
+    rank_two_tensor = deformation_gradient
+    index_i = 0
+    index_j = 1
+  []
+  [F13]
+    type = ADRankTwoAux
+    variable = 'F13'
+    rank_two_tensor = deformation_gradient
+    index_i = 0
+    index_j = 2
+  []
+  [F21]
+    type = ADRankTwoAux
+    variable = 'F21'
+    rank_two_tensor = deformation_gradient
+    index_i = 1
+    index_j = 0
+  []
+  [F22]
+    type = ADRankTwoAux
+    variable = 'F22'
+    rank_two_tensor = deformation_gradient
+    index_i = 1
+    index_j = 1
+  []
+  [F23]
+    type = ADRankTwoAux
+    variable = 'F23'
+    rank_two_tensor = deformation_gradient
+    index_i = 1
+    index_j = 2
+  []
+  [F31]
+    type = ADRankTwoAux
+    variable = 'F31'
+    rank_two_tensor = deformation_gradient
+    index_i = 2
+    index_j = 0
+  []
+  [F32]
+    type = ADRankTwoAux
+    variable = 'F32'
+    rank_two_tensor = deformation_gradient
+    index_i = 2
+    index_j = 1
+  []
+  [F33]
+    type = ADRankTwoAux
+    variable = 'F33'
+    rank_two_tensor = deformation_gradient
+    index_i = 2
+    index_j = 2
+  []
+  [strain_energy_density]
+    type = ADMaterialRealAux
+    variable = 'strain_energy_density'
+    property = strain_energy_density
+  []
 []
 
 [BCs]
@@ -117,13 +215,13 @@
     value = 0
     preset = false
   []
-  # [zfix]
-  #   type = DirichletBC
-  #   variable = 'disp_z'
-  #   boundary = 'left right'
-  #   value = 0
-  #   preset = false
-  # []
+  [zfix]
+    type = DirichletBC
+    variable = 'disp_z'
+    boundary = 'left right'
+    value = 0
+    preset = false
+  []
   [xrightfix]
     type = FunctionDirichletBC
     variable = 'disp_x'
@@ -173,5 +271,13 @@
     type = AreaPostprocessor
     boundary = 'right'
     use_displaced_mesh = true
+  []
+[]
+
+[VectorPostprocessors]
+  [Data]
+    type = ElementValueSampler
+    variable = 'F11 F12 F13 F21 F22 F23 F31 F32 F33 strain_energy_density'
+    sort_by = id
   []
 []

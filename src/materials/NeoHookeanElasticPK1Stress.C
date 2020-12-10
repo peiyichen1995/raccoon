@@ -42,6 +42,7 @@ NeoHookeanElasticPK1Stress::NeoHookeanElasticPK1Stress(const InputParameters & p
     _M2(getMaterialProperty<RankTwoTensor>("M2")),
     _stress(declareADProperty<RankTwoTensor>(_base_name + "stress")),
     _cauchy_stress(declareADProperty<RankTwoTensor>(_base_name + "cauchy_stress")),
+    _strain_energy_density(declareADProperty<Real>(_base_name + "strain_energy_density")),
     _current_elem_volume(_assembly.elemVolume())
 {
 }
@@ -104,4 +105,8 @@ NeoHookeanElasticPK1Stress::computeQpStress(ADReal pressure)
   _stress[_qp] = _F[_qp] * (S_isc + S_vol + S_ti_1 + S_ti_2);
 
   _cauchy_stress[_qp] = _stress[_qp] * _F[_qp].transpose() / J;
+
+  _strain_energy_density[_qp] = _mu1[_qp]*C_bar.trace() + _mu2[_qp]*std::pow(C_bar_cof.trace(), 3/2) +
+                                        _mu3[_qp]*(std::pow(J, _beta3[_qp]) + std::pow(J, - _beta3[_qp])) +
+                                        _mu4[_qp]/_beta4[_qp]*(std::exp(_beta4[_qp] * e1pos * e1pos) + std::exp(_beta4[_qp] * e2pos * e2pos));
 }

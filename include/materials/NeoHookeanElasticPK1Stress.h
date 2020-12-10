@@ -41,5 +41,8 @@ protected:
   ADMaterialProperty<RankTwoTensor> & _stress;
   ADMaterialProperty<RankTwoTensor> & _cauchy_stress;
 
+  /// strain energy density
+  ADMaterialProperty<Real> & _strain_energy_density;
+
   const Real & _current_elem_volume;
 };
