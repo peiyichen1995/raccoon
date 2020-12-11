@@ -98,7 +98,7 @@ model.compile(loss='mse', optimizer="adam")
 # In[11]:
 
 
-model.fit(x.reshape(-1, 1), y, epochs=10000, verbose=1)
+model.fit(x.reshape(-1, 1), y, epochs=10000, verbose=0)
 prediction_kera = model.predict(x.reshape(-1, 1))
 
 
@@ -171,7 +171,7 @@ model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
-model.fit(defg.to_numpy().reshape(-1,8), strain_energy_density.to_numpy(), epochs=10000, verbose=1)
+model.fit(defg.to_numpy().reshape(-1,8), strain_energy_density.to_numpy(), epochs=10000, verbose=0)
 
 
 # In[39]:
