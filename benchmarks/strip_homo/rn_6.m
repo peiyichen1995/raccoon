@@ -3,12 +3,13 @@ clear
 
 n_samples = 100;
 
-c1_mean = 259.59;
-% c2_mean = 21.343;
-c2_mean = 16.1028;
-g4_mean = 19.285;
-beta3_mean = 3.6537;
-beta4_mean = 500.02;
+% c1_mean = 259.59;
+c1_mean = 251.424;
+c2_mean = 23.316;
+% c2_mean = 16.1028;
+g4_mean = 2.8213;
+beta3_mean = 3.6;
+beta4_mean = 4.8334;
 
 x_cv = 0.2;
 
@@ -30,8 +31,8 @@ beta4 = gamrnd(a,beta4_b,n_samples,1);
 %
 % sample_cv = std(x)/sample_mean;
 eta = 2;
-g1 = 4.1543;
-g2 = 1.5;
+g1 = 2.271;
+g2 = 3.613;
 % beta3 = 3.6537;
 
 syms rho1 rho2;

@@ -74,7 +74,7 @@
     # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
     # prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
     # prop_values = '2.2706 3.6132 9.7000 2.8213 3.6000 4.8334'
-    prop_values = '3.896 1.323 8.881 16.821 3.743 800.707'
+    prop_values = '3.601 5.677 11.481 2.000 3.241 4.744'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
