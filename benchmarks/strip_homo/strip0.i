@@ -71,8 +71,8 @@
     type = GenericConstantMaterial
     prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
     # prop_values = '${g1} ${g2} ${g3} 22.8165 ${beta3} 364.1307'
-    prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
-    # prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
+    # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
+    prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
     # prop_values = '4.405990 1.156614 10.546827 16.232309 3.473211 378.691948'
   []
   [orientation1]
