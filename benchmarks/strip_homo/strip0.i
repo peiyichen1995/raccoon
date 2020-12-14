@@ -8,9 +8,9 @@
   xmax = 7.21
   ymax = 2.81
   zmax = 0.32
-  nx = 50
-  ny = 15
-  nz = 3
+  nx = 15
+  ny = 5
+  nz = 1
   second_order = true
   displacements = 'disp_x disp_y disp_z'
 []
@@ -73,7 +73,7 @@
     # prop_values = '${g1} ${g2} ${g3} 22.8165 ${beta3} 364.1307'
     # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
     # prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
-    prop_values = '5.361923 1.524266 7.079764 11.773415 4.156289 543.173117'
+    prop_values = '4.405990 1.156614 10.546827 16.232309 3.473211 378.691948'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
@@ -251,7 +251,7 @@
 [Outputs]
   [csv]
     type = CSV
-    file_base = 'stress_xx_sample_${sample}'
+    file_base = './def1/stress_xx_sample_${sample}'
   []
   exodus = true
 []
