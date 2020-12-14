@@ -131,16 +131,16 @@ file_name = 'stress_xx_sample_def_Data_00'
 # In[97]:
 
 
-data = pd.read_csv('./def2/stress_xx_sample_def_Data_0000.csv')
+data = pd.read_csv('./def1/stress_xx_sample_def_Data_0000.csv')
 features_mean = list(data.columns[5:13])
 defg = data.loc[:,features_mean]
 strain_energy_density = data.loc[:, 'strain_energy_density']
 
 for i in range(num_step):
     if (i+1) < 10:
-        data = pd.read_csv('./def2/' + file_name + '0' + str(i+1) + '.csv')
+        data = pd.read_csv('./def1/' + file_name + '0' + str(i+1) + '.csv')
     else:
-        data = pd.read_csv('./def2/' + file_name + str(i+1) + '.csv')
+        data = pd.read_csv('./def1/' + file_name + str(i+1) + '.csv')
 
     features_mean = list(data.columns[5:13])
     defg = defg.append(data.loc[:,features_mean], ignore_index=True)
@@ -164,7 +164,7 @@ x = defg.to_numpy()
 # x = x[1:100,:]
 y = strain_energy_density.to_numpy()
 # y = y[1:100]
-model.fit(x.reshape(-1,8), y, epochs=100, verbose=1)
+model.fit(x.reshape(-1,8), y, epochs=200, verbose=1)
 
 
 # In[118]:
@@ -183,15 +183,15 @@ for i in range(len(prediction)):
 
 # In[120]:
 
-f = open("NN_error2.txt", "w")
+f = open("NN_error1.txt", "w")
 f.write(str(err/sum(y)))
 f.write('\n')
 f.close()
 
 # serialize model to JSON
 model_json = model.to_json()
-with open("model2.json", "w") as json_file:
+with open("model1.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights("model2.h5")
+model.save_weights("model1.h5")
 print("Saved model to disk")
