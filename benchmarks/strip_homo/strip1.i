@@ -74,7 +74,7 @@
     # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
     # prop_values = '12.5048 7.9979 9.7 106.2356 3.6 160.6183'
     # prop_values = '2.2706 3.6132 9.7000 2.8213 3.6000 4.8334'
-    prop_values = '1.190 2.601 12.995 3.061 3.279 4.127'
+    prop_values = '2.179 2.858 29.417 3.092 2.306 4.817'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
@@ -252,7 +252,7 @@
 [Outputs]
   [csv]
     type = CSV
-    file_base = './def2/stress_xx_sample_${sample}'
+    file_base = './def3/stress_xx_sample_${sample}'
   []
   exodus = true
 []
