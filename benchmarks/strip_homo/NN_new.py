@@ -196,5 +196,6 @@ for i in range(len(prediction)):
 
 # In[120]:
 
-
-err/sum(y)
+f = open("NN_error.txt", "w")
+f.write(err/sum(y))
+f.close()
