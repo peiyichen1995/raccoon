@@ -138,9 +138,9 @@ strain_energy_density = data.loc[:, 'strain_energy_density']
 
 for i in range(num_step):
     if (i+1) < 10:
-        data = pd.read_csv('./def1' + file_name + '0' + str(i+1) + '.csv')
+        data = pd.read_csv('./def1/' + file_name + '0' + str(i+1) + '.csv')
     else:
-        data = pd.read_csv('./def1' + file_name + str(i+1) + '.csv')
+        data = pd.read_csv('./def1/' + file_name + str(i+1) + '.csv')
 
     features_mean = list(data.columns[5:13])
     defg = defg.append(data.loc[:,features_mean], ignore_index=True)
