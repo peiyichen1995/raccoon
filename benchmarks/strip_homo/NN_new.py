@@ -156,7 +156,7 @@ for i in range(num_step):
 
 model = keras.Sequential()
 model.add(keras.layers.Dense(units = 4, activation = 'linear', input_shape=[8]))
-# model.add(keras.layers.Dense(units = 16, activation = 'relu'))
+model.add(keras.layers.Dense(units = 2, activation = 'relu'))
 # model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
@@ -183,7 +183,7 @@ for i in range(len(prediction)):
 
 # In[120]:
 
-f = open("NN_error.txt", "w")
+f = open("NN_error1.txt", "w")
 f.write(str(err/sum(y)))
 f.write('\n')
 f.close()
