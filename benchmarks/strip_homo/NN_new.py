@@ -155,16 +155,16 @@ for i in range(num_step):
 
 
 model = keras.Sequential()
-model.add(keras.layers.Dense(units = 4, activation = 'linear', input_shape=[8]))
+model.add(keras.layers.Dense(units = 8, activation = 'linear', input_shape=[8]))
+model.add(keras.layers.Dense(units = 4, activation = 'relu'))
 model.add(keras.layers.Dense(units = 2, activation = 'relu'))
-# model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 x = defg.to_numpy()
 # x = x[1:100,:]
 y = strain_energy_density.to_numpy()
 # y = y[1:100]
-model.fit(x.reshape(-1,8), y, epochs=100, verbose=0)
+model.fit(x.reshape(-1,8), y, epochs=1000, verbose=0)
 
 
 # In[118]:
