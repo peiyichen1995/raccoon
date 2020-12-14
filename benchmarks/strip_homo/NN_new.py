@@ -174,9 +174,9 @@ model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 x = defg.to_numpy()
-x = x[1:100,:]
+# x = x[1:100,:]
 y = strain_energy_density.to_numpy()
-y = y[1:100]
+# y = y[1:100]
 model.fit(x.reshape(-1,8), y, epochs=10, verbose=0)
 
 
@@ -198,4 +198,5 @@ for i in range(len(prediction)):
 
 f = open("NN_error.txt", "w")
 f.write(str(err/sum(y)))
+f.write('\n')
 f.close()
