@@ -51,7 +51,7 @@ g2_samples = [];
 g3_samples = [];
 for i = 1:n_samples
     %     fprintf(fileID,'mpiexec -n 10 ../../raccoon-opt -i strip.i g1=%f g2=%f g3=%f g4=%f sample=%d\n',c2(i)*u(i)/2,3^(-3/2)*c2(i)*(1-u(i)),c1(i)/2/beta3/beta3,g4(i),i);
-    fprintf(fileID,'g1=%f g2=%f g3=%f g4=%f beta3=%f beta4=%f sample=%d\n',c2(i)*u(i)/2,3^(-3/2)*c2(i)*(1-u(i)),c1(i)/2/beta3(i)/beta3(i),g4(i),beta3(i),beta4(i),i);
+    fprintf(fileID,'g1=%.3f g2=%.3f g3=%.3f g4=%.3f beta3=%.3f beta4=%.3f sample=%d\n',c2(i)*u(i)/2,3^(-3/2)*c2(i)*(1-u(i)),c1(i)/2/beta3(i)/beta3(i),g4(i),beta3(i),beta4(i),i);
     g1_samples = [g1_samples;c2(i)*u(i)/2];
     g2_samples = [g2_samples;3^(-3/2)*c2(i)*(1-u(i))];
     g3_samples = [g3_samples;c1(i)/2/beta3(i)/beta3(i)];
