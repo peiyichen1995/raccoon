@@ -131,16 +131,16 @@ file_name = 'stress_xx_sample_def_Data_00'
 # In[97]:
 
 
-data = pd.read_csv('./stress_xx_sample_def_Data_0000.csv')
+data = pd.read_csv('./def1/stress_xx_sample_def_Data_0000.csv')
 features_mean = list(data.columns[5:13])
 defg = data.loc[:,features_mean]
 strain_energy_density = data.loc[:, 'strain_energy_density']
 
 for i in range(num_step):
     if (i+1) < 10:
-        data = pd.read_csv('./' + file_name + '0' + str(i+1) + '.csv')
+        data = pd.read_csv('./def1' + file_name + '0' + str(i+1) + '.csv')
     else:
-        data = pd.read_csv('./' + file_name + str(i+1) + '.csv')
+        data = pd.read_csv('./def1' + file_name + str(i+1) + '.csv')
 
     features_mean = list(data.columns[5:13])
     defg = defg.append(data.loc[:,features_mean], ignore_index=True)
@@ -150,34 +150,21 @@ for i in range(num_step):
 #     strain_energy_density=data.loc[:, 'strain_energy_density']
 
 
-# In[98]:
-
-
-strain_energy_density
-
-
-# In[115]:
-
-
-a = defg.to_numpy()
-b=a[1:100,:]
-y
-
 
 # In[117]:
 
 
 model = keras.Sequential()
-model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[8]))
-model.add(keras.layers.Dense(units = 64, activation = 'relu'))
-model.add(keras.layers.Dense(units = 64, activation = 'relu'))
+model.add(keras.layers.Dense(units = 4, activation = 'linear', input_shape=[8]))
+# model.add(keras.layers.Dense(units = 16, activation = 'relu'))
+# model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 x = defg.to_numpy()
 # x = x[1:100,:]
 y = strain_energy_density.to_numpy()
 # y = y[1:100]
-model.fit(x.reshape(-1,8), y, epochs=10, verbose=0)
+model.fit(x.reshape(-1,8), y, epochs=100, verbose=0)
 
 
 # In[118]:
