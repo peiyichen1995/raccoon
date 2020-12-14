@@ -197,4 +197,4 @@ for i in range(len(prediction)):
 # In[120]:
 
 
-err/sum(simulation)
+err/sum(y)
