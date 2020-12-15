@@ -27,17 +27,18 @@ y_train = train_data.loc[:,'W']
 
 
 model = keras.Sequential()
-model.add(keras.layers.Dense(units = 18, activation = 'linear', input_shape=[9]))
-model.add(keras.layers.Dense(units = 9, activation = 'relu'))
-model.add(keras.layers.Dense(units = 6, activation = 'relu'))
-model.add(keras.layers.Dense(units = 3, activation = 'relu'))
+model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[9]))
+model.add(keras.layers.Dense(units = 64, activation = 'relu'))
+model.add(keras.layers.Dense(units = 64, activation = 'relu'))
+# model.add(keras.layers.Dense(units = 6, activation = 'relu'))
+# model.add(keras.layers.Dense(units = 3, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 x = x_train.to_numpy()
 # x = x[1:100,:]
 y = y_train.to_numpy()
 # y = y[1:100]
-model.fit(x.reshape(-1,9), y, epochs=20000, verbose=1)
+model.fit(x.reshape(-1,9), y, epochs=10000, verbose=1)
 
 
 # In[32]:
