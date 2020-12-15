@@ -28,8 +28,9 @@ y_train = train_data.loc[:,'W']
 
 model = keras.Sequential()
 model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[9]))
-model.add(keras.layers.Dense(units = 64, activation = 'relu'))
-model.add(keras.layers.Dense(units = 64, activation = 'relu'))
+model.add(keras.layers.Dense(units = 32, activation = 'relu'))
+model.add(keras.layers.Dense(units = 32, activation = 'relu'))
+model.add(keras.layers.Dense(units = 32, activation = 'relu'))
 # model.add(keras.layers.Dense(units = 6, activation = 'relu'))
 # model.add(keras.layers.Dense(units = 3, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
