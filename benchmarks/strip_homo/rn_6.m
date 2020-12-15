@@ -5,7 +5,7 @@ n_samples = 100;
 
 % c1_mean = 259.59;
 c1_mean = 251.424;
-c2_mean = 23.316;
+c2_mean = 22.997;
 % c2_mean = 16.1028;
 g4_mean = 2.8213;
 beta3_mean = 3.6;
