@@ -27,15 +27,15 @@ y_train = train_data.loc[:,'W']
 
 
 model = keras.Sequential()
-model.add(keras.layers.Dense(units = 9, activation = 'linear', input_shape=[9]))
-model.add(keras.layers.Dense(units = 6, activation = 'relu'))
-model.add(keras.layers.Dense(units = 3, activation = 'relu'))
+model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[9]))
+model.add(keras.layers.Dense(units = 64, activation = 'relu'))
+model.add(keras.layers.Dense(units = 64, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 x = x_train.to_numpy()
-x = x[1:100,:]
+# x = x[1:100,:]
 y = y_train.to_numpy()
-y = y[1:100]
+# y = y[1:100]
 model.fit(x.reshape(-1,9), y, epochs=10000, verbose=1)
 
 
@@ -61,4 +61,3 @@ plt.xlabel("lambda_11")
 plt.ylabel("Strain energy density")
 plt.savefig('test.png')
 plt.show()
-
