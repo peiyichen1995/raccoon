@@ -40,7 +40,7 @@ model.compile(loss='mse', optimizer="adam")
 # In[44]:
 
 
-num_step = 2
+num_step = 1
 file_name = './data/data'
 A_ij = []
 errs = []
@@ -74,8 +74,8 @@ for i in range(num_step):
     prediction = model.predict(x)
     err = 0
     for i in range(len(prediction)):
-        err = err + abs(prediction[i][0] - y[i])/abs(y[i])
-    # err = err/sum(y)
+        err = err + abs(prediction[i][0] - y[i])
+    err = err/sum(y)
     errs.append(err)
 
 
