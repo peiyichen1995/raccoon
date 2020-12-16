@@ -74,7 +74,8 @@ for i in range(num_step):
     prediction = model.predict(x)
     err = 0
     for i in range(len(prediction)):
-        err = err + abs(prediction[i][0] - y[i])
+        err = err + abs(prediction[i][0] - y[i])/abs(y[i])
+    # err = err/sum(y)
     errs.append(err)
 
 
