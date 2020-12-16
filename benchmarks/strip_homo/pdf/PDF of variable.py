@@ -40,7 +40,7 @@ model.compile(loss='mse', optimizer="adam")
 # In[44]:
 
 
-num_step = 2
+num_step = 1000
 file_name = './data/data'
 A_ij = []
 errs = []
