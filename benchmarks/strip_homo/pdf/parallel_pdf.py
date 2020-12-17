@@ -10,7 +10,7 @@ import keras
 
 
 def my_fun(num):
-
+    println('running data' + str(num))
     # set NN model
     model = keras.Sequential()
     model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[9]))
@@ -39,7 +39,7 @@ def my_fun(num):
     y = y_train.to_numpy()
 
     # fitting model
-    model.fit(x.reshape(-1,9), y, epochs=10, verbose=1)
+    model.fit(x.reshape(-1,9), y, epochs=10000, verbose=0)
 
     # getting the last layer
     layerCount = len(model.layers)
@@ -81,7 +81,7 @@ def my_fun(num):
 if __name__ == '__main__':
 
     # Run this with a pool of 5 agents having a chunksize of 3 until finished
-    agents = 40
+    agents = 100
     chunksize = 1
     with Pool(processes=agents) as pool:
-        pool.map(my_fun, list(range(1,41)), chunksize)
+        pool.map(my_fun, list(range(1,1001)), chunksize)
