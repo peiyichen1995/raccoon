@@ -13,10 +13,12 @@ def square(x):
 
 start_time = time.time()
 
+dataset = range(1,1000000)
+
 if __name__ == '__main__':
 
     # Define the dataset
-    dataset = range(1,1000000)
+
 
     # Output the dataset
     # print ('Dataset: ' + str(dataset))
