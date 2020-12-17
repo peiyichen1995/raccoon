@@ -28,7 +28,7 @@ model.add(keras.layers.Dense(units = 11, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 
-def my_fun(file_name, model):
+def my_fun(file_name):
     train_data = pd.read_csv(file_name)
     features_mean = list(train_data.columns[0:9])
     x_train = train_data.loc[:,features_mean]
@@ -84,4 +84,4 @@ if __name__ == '__main__':
     agents = 2
     chunksize = 1
     with Pool(processes=agents) as pool:
-        pool.map(my_fun, file_names, model, chunksize)
+        pool.map(my_fun, file_names, chunksize)
