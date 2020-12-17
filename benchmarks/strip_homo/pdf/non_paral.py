@@ -4,7 +4,7 @@ def square(x):
     # calculate the square of the value of x
     return x*x
 
-dataset = range(1,100000)
+dataset = range(1,1000000)
 
 start_time = time.time()
 

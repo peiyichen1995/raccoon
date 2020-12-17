@@ -16,14 +16,14 @@ start_time = time.time()
 if __name__ == '__main__':
 
     # Define the dataset
-    dataset = range(1,100000)
+    dataset = range(1,1000000)
 
     # Output the dataset
     # print ('Dataset: ' + str(dataset))
 
     # Run this with a pool of 5 agents having a chunksize of 3 until finished
-    agents = 40
-    chunksize = 2500
+    agents = 80
+    chunksize = 12500
     with Pool(processes=agents) as pool:
         result = pool.map(square, dataset, chunksize)
 
