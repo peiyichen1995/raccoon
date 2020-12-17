@@ -28,8 +28,8 @@ model.add(keras.layers.Dense(units = 11, activation = 'relu'))
 model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 
-def my_fun(file_name):
-    train_data = pd.read_csv(file_name)
+def my_fun(num):
+    train_data = pd.read_csv('./data/data' + str(num+1) + '.csv')
     features_mean = list(train_data.columns[0:9])
     x_train = train_data.loc[:,features_mean]
     y_train = train_data.loc[:,'W']
@@ -65,16 +65,16 @@ def my_fun(file_name):
     f.write('\n')
     f.close()
 
-file_names = []
-file_name = './data/data'
+# file_names = []
+# file_name = './data/data'
+#
+# num_step = 1
+# for i in range(num_step):
+#     file_names.append(file_name + str(i+1) + '.csv')
+#
+# print(file_names)
 
-num_step = 1
-for i in range(num_step):
-    file_names.append(file_name + str(i+1) + '.csv')
-
-print(file_names)
-
-my_fun(file_names[0])
+my_fun(0)
 
 # if __name__ == '__main__':
 #
