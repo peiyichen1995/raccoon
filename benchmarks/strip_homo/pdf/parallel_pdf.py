@@ -29,7 +29,7 @@ model.add(keras.layers.Dense(units = 1, activation = 'linear'))
 model.compile(loss='mse', optimizer="adam")
 
 def my_fun(num):
-    train_data = pd.read_csv('./data/data' + str(num+1) + '.csv')
+    train_data = pd.read_csv('./data/data' + str(num) + '.csv')
     features_mean = list(train_data.columns[0:9])
     x_train = train_data.loc[:,features_mean]
     y_train = train_data.loc[:,'W']
@@ -74,18 +74,12 @@ def my_fun(num):
 #
 # print(file_names)
 
-my_fun(0)
+# my_fun(0)
 
-# if __name__ == '__main__':
-#
-#     # Define the dataset
-#
-#
-#     # Output the dataset
-#     # print ('Dataset: ' + str(dataset))
-#
-#     # Run this with a pool of 5 agents having a chunksize of 3 until finished
-#     agents = 1
-#     chunksize = 1
-#     with Pool(processes=agents) as pool:
-#         pool.map(my_fun, file_names, chunksize)
+if __name__ == '__main__':
+
+    # Run this with a pool of 5 agents having a chunksize of 3 until finished
+    agents = 2
+    chunksize = 1
+    with Pool(processes=agents) as pool:
+        pool.map(my_fun, range(1,2), chunksize)
