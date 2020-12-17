@@ -74,16 +74,18 @@ for i in range(num_step):
 
 print(file_names)
 
-if __name__ == '__main__':
+my_fun(file_names[0])
 
-    # Define the dataset
-
-
-    # Output the dataset
-    # print ('Dataset: ' + str(dataset))
-
-    # Run this with a pool of 5 agents having a chunksize of 3 until finished
-    agents = 1
-    chunksize = 1
-    with Pool(processes=agents) as pool:
-        pool.map(my_fun, file_names, chunksize)
+# if __name__ == '__main__':
+#
+#     # Define the dataset
+#
+#
+#     # Output the dataset
+#     # print ('Dataset: ' + str(dataset))
+#
+#     # Run this with a pool of 5 agents having a chunksize of 3 until finished
+#     agents = 1
+#     chunksize = 1
+#     with Pool(processes=agents) as pool:
+#         pool.map(my_fun, file_names, chunksize)
