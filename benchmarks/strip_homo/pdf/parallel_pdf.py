@@ -37,7 +37,7 @@ def my_fun(file_name):
     y = y_train.to_numpy()
 
     # fitting model
-    model.fit(x.reshape(-1,9), y, epochs=10, verbose=0)
+    model.fit(x.reshape(-1,9), y, epochs=10, verbose=1)
 
     # getting the last layer
     layerCount = len(model.layers)
@@ -68,7 +68,7 @@ def my_fun(file_name):
 file_names = []
 file_name = './data/data'
 
-num_step = 2
+num_step = 1
 for i in range(num_step):
     file_names.append(file_name + str(i+1) + '.csv')
 
@@ -82,6 +82,6 @@ if __name__ == '__main__':
 
     # Run this with a pool of 5 agents having a chunksize of 3 until finished
     agents = 1
-    chunksize = 2
+    chunksize = 1
     with Pool(processes=agents) as pool:
         pool.map(my_fun, file_names, chunksize)
