@@ -65,4 +65,11 @@ def my_fun(file_name, model):
     f.write('\n')
     f.close()
 
-my_fun('./data/data1.csv', model)
+file_names = []
+file_name = './data/data'
+
+num_step = 2
+for i in range(num_step):
+    file_names.append(file_name + str(i+1) + '.csv')
+
+print(file_names)
