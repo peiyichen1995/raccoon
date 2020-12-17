@@ -81,7 +81,7 @@ if __name__ == '__main__':
     # print ('Dataset: ' + str(dataset))
 
     # Run this with a pool of 5 agents having a chunksize of 3 until finished
-    agents = 2
-    chunksize = 1
+    agents = 1
+    chunksize = 2
     with Pool(processes=agents) as pool:
         pool.map(my_fun, file_names, chunksize)
