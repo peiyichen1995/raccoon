@@ -72,6 +72,8 @@ num_step = 1
 for i in range(num_step):
     file_names.append(file_name + str(i+1) + '.csv')
 
+print(file_names)
+
 if __name__ == '__main__':
 
     # Define the dataset
