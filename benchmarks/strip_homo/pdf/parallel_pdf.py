@@ -37,7 +37,7 @@ def my_fun(num):
     y = y_train.to_numpy()
 
     # fitting model
-    model.fit(x.reshape(-1,9), y, epochs=10, verbose=1)
+    model.fit(x.reshape(-1,9), y, epochs=10, verbose=0)
 
     # getting the last layer
     layerCount = len(model.layers)
