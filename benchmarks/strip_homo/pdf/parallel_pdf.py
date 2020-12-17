@@ -10,7 +10,7 @@ import keras
 
 
 def my_fun(num):
-    println('running data' + str(num))
+    print('running data' + str(num) + '\n')
     # set NN model
     model = keras.Sequential()
     model.add(keras.layers.Dense(units = 1, activation = 'linear', input_shape=[9]))
