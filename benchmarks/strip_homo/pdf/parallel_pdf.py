@@ -37,7 +37,7 @@ def my_fun(file_name, model):
     y = y_train.to_numpy()
 
     # fitting model
-    model.fit(x.reshape(-1,9), y, epochs=10000, verbose=1)
+    model.fit(x.reshape(-1,9), y, epochs=10, verbose=1)
 
     # getting the last layer
     layerCount = len(model.layers)
@@ -56,12 +56,12 @@ def my_fun(file_name, model):
     err = err/sum(y)
 
     f = open("A_ij_new.txt", "w")
-    f.write(A_ij)
+    f.write(str(A_ij))
     f.write('\n')
     f.close()
 
     f = open("errs_new.txt", "w")
-    f.write(err)
+    f.write(str(err))
     f.write('\n')
     f.close()
 
