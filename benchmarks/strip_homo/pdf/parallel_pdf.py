@@ -81,7 +81,7 @@ def my_fun(num):
 if __name__ == '__main__':
 
     # Run this with a pool of 5 agents having a chunksize of 3 until finished
-    agents = 50
+    agents = 10
     chunksize = 1
     with Pool(processes=agents) as pool:
-        pool.map(my_fun, list(range(1,1001)), chunksize)
+        pool.map(my_fun, list(range(1,11)), chunksize)
