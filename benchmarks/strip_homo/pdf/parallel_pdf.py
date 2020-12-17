@@ -82,4 +82,4 @@ if __name__ == '__main__':
     agents = 2
     chunksize = 1
     with Pool(processes=agents) as pool:
-        pool.map(my_fun, range(1,2), chunksize)
+        pool.map(my_fun, [1,2], chunksize)
