@@ -72,4 +72,16 @@ num_step = 2
 for i in range(num_step):
     file_names.append(file_name + str(i+1) + '.csv')
 
-print(file_names)
+if __name__ == '__main__':
+
+    # Define the dataset
+
+
+    # Output the dataset
+    # print ('Dataset: ' + str(dataset))
+
+    # Run this with a pool of 5 agents having a chunksize of 3 until finished
+    agents = 2
+    chunksize = 1
+    with Pool(processes=agents) as pool:
+        pool.map(my_fun, file_names, model, chunksize)
