@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 import tensorflow
 import keras
@@ -50,13 +51,16 @@ x = x_train.to_numpy()
 # x = x[1:100,:]
 y = y_train.to_numpy()
 # y = y[1:100]
-model.fit(x.reshape(-1,9), y, epochs=10000, verbose=1)
+
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+
+model.fit(X_train.reshape(-1,9), y_train, epochs=10, verbose=1)
 
 
 # In[32]:
 
 
-prediction = model.predict(x)
+prediction = model.predict(X_test)
 prediction
 
 
@@ -64,8 +68,8 @@ prediction
 
 
 fig, ax = plt.subplots()
-ax.plot(x[:,0], y, label='train data')
-ax.plot(x[:,0], prediction, label='trained NN')
+ax.plot(X_test[:,0], y_test, label='train data')
+ax.plot(X_test[:,0], prediction, label='trained NN')
 plt.title("lambda vs. strain energy density")
 legend = ax.legend(loc='lower right', shadow=True, fontsize='x-large')
 
