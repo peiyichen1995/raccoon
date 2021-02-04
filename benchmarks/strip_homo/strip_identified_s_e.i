@@ -72,7 +72,7 @@
     prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
     # prop_values = '${g1} ${g2} ${g3} 22.8165 ${beta3} 364.1307'
     # prop_values = '4.1543 1.5 9.7227 19.285 3.6537 500.02'
-    prop_values = '7.1660 4.1378 9.7000 2.6666 3.6000 16.3743'
+    prop_values = '7.6389 3.9445 9.7000 2.6671 3.6000 16.4347'
     # prop_values = '4.405990 1.156614 10.546827 16.232309 3.473211 378.691948'
   []
   [orientation1]
@@ -245,7 +245,7 @@
   automatic_scaling = true
 
   dt = 1
-  end_time = 27
+  end_time = 28
 []
 
 [Outputs]
