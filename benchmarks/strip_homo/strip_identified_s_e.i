@@ -8,9 +8,9 @@
   xmax = 30
   ymax = 5
   zmax = 1.32
-  nx = 100
-  ny = 12
-  nz = 2
+  nx = 60
+  ny = 10
+  nz = 1
   second_order = true
   displacements = 'disp_x disp_y disp_z'
 []
@@ -208,20 +208,20 @@
     value = 0
     preset = false
   []
-  [yfix]
-    type = DirichletBC
-    variable = 'disp_y'
-    boundary = 'left right'
-    value = 0
-    preset = false
-  []
-  [zfix]
-    type = DirichletBC
-    variable = 'disp_z'
-    boundary = 'left right'
-    value = 0
-    preset = false
-  []
+  # [yfix]
+  #   type = DirichletBC
+  #   variable = 'disp_y'
+  #   boundary = 'left right'
+  #   value = 0
+  #   preset = false
+  # []
+  # [zfix]
+  #   type = DirichletBC
+  #   variable = 'disp_z'
+  #   boundary = 'left right'
+  #   value = 0
+  #   preset = false
+  # []
   [xrightfix]
     type = FunctionDirichletBC
     variable = 'disp_x'
@@ -251,7 +251,7 @@
 [Outputs]
   [csv]
     type = CSV
-    file_base = './def1/stress_xx_sample_${sample}'
+    file_base = './iden_s_e/stress_xx_sample_${sample}'
   []
   exodus = true
 []
