@@ -5,9 +5,9 @@
   xmin = 0
   ymin = 0
   zmin = 0
-  xmax = 30
-  ymax = 5
-  zmax = 1.32
+  xmax = 10
+  ymax = 3
+  zmax = 0.5
   nx = 60
   ny = 10
   nz = 1
@@ -226,7 +226,7 @@
     type = FunctionDirichletBC
     variable = 'disp_x'
     boundary = 'right'
-    function = '0.1*t*3'
+    function = '0.1*t*1'
     preset = false
   []
 []
