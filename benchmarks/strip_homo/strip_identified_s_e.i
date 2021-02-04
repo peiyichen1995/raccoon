@@ -251,7 +251,7 @@
 [Outputs]
   [csv]
     type = CSV
-    file_base = './iden_s_e/stress_xx_sample_${sample}'
+    file_base = './iden_s_e/paper2/stress_xx_sample_${sample}'
   []
   exodus = true
 []
