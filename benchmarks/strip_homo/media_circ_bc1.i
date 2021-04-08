@@ -66,14 +66,15 @@
 [Materials]
   [props]
     type = GenericConstantMaterial
-    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
+    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4 rho'
     # prop_values = '1.02695654210599 0.12634328931297326 9.7 1.8802292570744155 3.6 5.935591515989756'
     prop_values = '0.0568
     0.0122
     9.7000
     5.0838
     3.6000
-    4.3347'
+    4.3347
+    0.5'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor

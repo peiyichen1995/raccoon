@@ -22,6 +22,7 @@ NeoHookeanElasticPK1Stress::validParams()
   params.addParam<MaterialPropertyName>("mu4", "mu4", "mu4 for the tissue term");
   params.addParam<MaterialPropertyName>("beta3", "beta3", "beta3 in the Neo-Hookean model");
   params.addParam<MaterialPropertyName>("beta4", "beta4", "beta4 for the tissue term");
+  params.addParam<MaterialPropertyName>("rho", "rho", "rho for the tissue term");
   params.addParam<MaterialPropertyName>("M1", "M1", "first orientation tensor in the tissue term");
   params.addParam<MaterialPropertyName>("M2", "M2", "second orientation tensor in the tissue term");
   return params;
@@ -38,6 +39,7 @@ NeoHookeanElasticPK1Stress::NeoHookeanElasticPK1Stress(const InputParameters & p
     _mu4(getMaterialProperty<Real>("mu4")),
     _beta3(getMaterialProperty<Real>("beta3")),
     _beta4(getMaterialProperty<Real>("beta4")),
+    _rho(getMaterialProperty<Real>("rho")),
     _M1(getMaterialProperty<RankTwoTensor>("M1")),
     _M2(getMaterialProperty<RankTwoTensor>("M2")),
     _stress(declareADProperty<RankTwoTensor>(_base_name + "stress")),
@@ -99,8 +101,12 @@ NeoHookeanElasticPK1Stress::computeQpStress(ADReal pressure)
   ADReal e2pos = e2 > 0 ? e2 : 0;
 
 
-  ADRankTwoTensor S_ti_1 = 4 * _mu4[_qp] * e1pos * std::exp(_beta4[_qp] * e1pos * e1pos) * _M1[_qp];
-  ADRankTwoTensor S_ti_2 = 4 * _mu4[_qp] * e2pos * std::exp(_beta4[_qp] * e2pos * e2pos) * _M2[_qp];
+  // ADRankTwoTensor S_ti_1 = 4 * _mu4[_qp] * e1pos * std::exp(_beta4[_qp] * e1pos * e1pos) * _M1[_qp];
+  // ADRankTwoTensor S_ti_2 = 4 * _mu4[_qp] * e2pos * std::exp(_beta4[_qp] * e2pos * e2pos) * _M2[_qp];
+  ADRankTwoTensor S_ti_1 = 4 * _mu4[_qp] * std::exp((1 - _rho[_qp]) * _beta4[_qp] * (_C[_qp].trace() - 3) * (_C[_qp].trace() - 3) + _rho[_qp] * _beta4[_qp] * e1pos * e1pos) *
+                              (_rho[_qp] * e1pos * _M1[_qp] + (1 - _rho[_qp]) * (_C[_qp].trace() - 3) * I2);
+  ADRankTwoTensor S_ti_2 = 4 * _mu4[_qp] * std::exp((1 - _rho[_qp]) * _beta4[_qp] * (_C[_qp].trace() - 3) * (_C[_qp].trace() - 3) + _rho[_qp] * _beta4[_qp] * e2pos * e2pos) *
+                              (_rho[_qp] * e2pos * _M2[_qp] + (1 - _rho[_qp]) * (_C[_qp].trace() - 3) * I2);
 
   _stress[_qp] = _F[_qp] * (S_isc + S_vol + S_ti_1 + S_ti_2);
 

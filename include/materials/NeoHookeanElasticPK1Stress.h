@@ -34,6 +34,7 @@ protected:
   const MaterialProperty<Real> & _mu4;
   const MaterialProperty<Real> & _beta3;
   const MaterialProperty<Real> & _beta4;
+  const MaterialProperty<Real> & _rho;
   const MaterialProperty<RankTwoTensor> & _M1;
   const MaterialProperty<RankTwoTensor> & _M2;
 
