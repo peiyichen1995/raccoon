@@ -1,5 +1,4 @@
 N = 2
-
 [Mesh]
   type = GeneratedMesh
   elem_type = TET10
@@ -9,7 +8,6 @@ N = 2
   nz = ${N}
   second_order = true
 []
-
 [Variables]
   [disp_x]
     order = SECOND
@@ -21,12 +19,11 @@ N = 2
     order = SECOND
   []
 []
-
 [Materials]
   [props]
     type = GenericConstantMaterial
-    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
-    prop_values = '4 3 10 19 4 1e-3'
+    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4 rho'
+    prop_values = '4 3 10 19 4 1e-3 0.1'
   []
   [orientation1]
     type = GenericConstantRankTwoTensor
@@ -52,7 +49,6 @@ N = 2
     type = NeoHookeanElasticPK1Stress
   []
 []
-
 [Kernels]
   [xbody]
     type = BodyForce
@@ -93,7 +89,6 @@ N = 2
     displacements = 'disp_x disp_y disp_z'
   []
 []
-
 [BCs]
   [xfix]
     type = FunctionDirichletBC
@@ -117,7 +112,6 @@ N = 2
     preset = false
   []
 []
-
 [Executioner]
   type = Steady
   solve_type = 'NEWTON'
@@ -127,14 +121,12 @@ N = 2
   line_search = none
   nl_abs_tol = 1e-12
 []
-
 [Outputs]
   [exodus]
     type = Exodus
     file_base = 'displacements'
   []
 []
-
 [Postprocessors]
   [err]
     type = ElementVectorL2Error

@@ -5,9 +5,9 @@
   xmin = 0
   ymin = 0
   zmin = 0
-  xmax = 7.21
-  ymax = 2.81
-  zmax = 0.16
+  xmax = 30
+  ymax = 5
+  zmax = 1.32
   nx = 30
   ny = 5
   nz = 1
@@ -219,7 +219,7 @@
   [zfix]
     type = DirichletBC
     variable = 'disp_z'
-    boundary = 'back'
+    boundary = 'left right'
     value = 0
     preset = false
   []
@@ -227,7 +227,7 @@
     type = FunctionDirichletBC
     variable = 'disp_x'
     boundary = 'right'
-    function = '0.1*t*0.721'
+    function = '0.1*t*3'
     preset = false
   []
 []
@@ -254,12 +254,12 @@
   [stress_xx]
     type = PointValue
     variable = 'stress_xx'
-    point = '7.21 1.405 0.16'
+    point = '5 1.5 0.25'
   []
-  [lambda1]
-    type = PointValue
-    variable = F11
-    point = '7.21 1.405 0.16'
+  [F]
+    type = NodalSum
+    variable = f
+    boundary = 'right'
   []
   [A]
     type = AreaPostprocessor
