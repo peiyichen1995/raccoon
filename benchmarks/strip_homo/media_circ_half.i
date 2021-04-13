@@ -87,13 +87,13 @@
     type = GenericConstantRankTwoTensor
     tensor_name = M1
     # tensor_values = '0.9570 -0.2028 0 -0.2028 0.0430 0 0 0 0'
-    tensor_values = '0.7590   -0.4277         0 -0.4277    0.2410         0 0         0         0'
+    tensor_values = '0.8227   -0.3819         0 -0.3819    0.1773         0 0         0         0'
   []
   [orientation2]
     type = GenericConstantRankTwoTensor
     tensor_name = M2
     # tensor_values = '0.9570 0.2028 0  0.2028 0.0430 0 0 0 0'
-    tensor_values = '0.7590    0.4277         0 0.4277    0.2410         0 0         0         0'
+    tensor_values = '0.8227    0.3819         0 0.3819    0.1773         0 0         0         0'
   []
   [strain]
     type = RCGStrain
@@ -246,7 +246,7 @@
 [Outputs]
   [csv]
     type = CSV
-    file_base = './identified/sample2/circ_sample_${sample}'
+    file_base = './100samples/circ/circ_sample_${sample}'
   []
   exodus = true
 []
