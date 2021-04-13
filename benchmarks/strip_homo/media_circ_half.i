@@ -8,8 +8,8 @@
   xmax = 7.21
   ymax = 2.81
   zmax = 0.16
-  nx = 30
-  ny = 5
+  nx = 15
+  ny = 6
   nz = 1
   second_order = true
   displacements = 'disp_x disp_y disp_z'

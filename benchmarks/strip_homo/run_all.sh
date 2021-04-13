@@ -8,6 +8,6 @@ while read -r line; do
   echo "====================================="
   echo "running $line"
   echo "====================================="
-  mpiexec -n 50 ../../raccoon-opt -i media_circ_half.i $line </dev/null
+  mpiexec -n 2 ../../raccoon-opt -i media_circ_half.i $line </dev/null
 
 done < $file
