@@ -102,7 +102,7 @@
   [Pressure]
     [inner]
       boundary = 1
-      function = 't'
+      function = '0.5*t'
       displacements = 'disp_x disp_y disp_z'
     []
   []
@@ -140,7 +140,7 @@
   automatic_scaling = true
 
   dt = 1
-  end_time = 20
+  end_time = 22
 []
 
 [Outputs]
