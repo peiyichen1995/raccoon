@@ -8,7 +8,8 @@
     type = ExtraNodesetGenerator
     input = fmg
     new_boundary = 'pin'
-    nodes = '267652'
+    # nodes = '267652'
+    nodes = '271739 249826'
   []
   second_order = true
 []
