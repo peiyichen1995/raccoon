@@ -39,14 +39,15 @@
 [Materials]
   [props]
     type = GenericConstantMaterial
-    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4'
-    prop_values = '4.1543 2.5084 9.7227 19.285 3.6537 500.02'
+    prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4 rho'
+    prop_values = '0 0 9.7 4.41336 3.6 11.257 0.260609'
   []
   [orientation]
     type = TissueOrientation
     phi1 = 'phi1'
     phi2 = 'phi2'
-    alpha = 0.8076
+    alpha = 0.3665
+    # alpha = 0.8076
   []
   [strain]
     type = RCGStrain

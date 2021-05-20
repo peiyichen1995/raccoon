@@ -227,7 +227,7 @@
     type = FunctionDirichletBC
     variable = 'disp_x'
     boundary = 'right'
-    function = '0.1*t*0.721'
+    function = '0.4*t*0.721'
     preset = false
   []
 []
@@ -241,7 +241,7 @@
   nl_rel_tol = 1e-6
   automatic_scaling = true
   dt = 1
-  end_time = 28
+  end_time = 10
 []
 [Outputs]
   [csv]
