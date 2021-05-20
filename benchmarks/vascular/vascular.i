@@ -56,7 +56,7 @@
     type = TissueOrientation
     phi1 = 'phi1'
     phi2 = 'phi2'
-    angle = ${alpha}
+    alpha = '${angle}'
     # alpha = 0.3665
     # alpha = 0.8076
   []
