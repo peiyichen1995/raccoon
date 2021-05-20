@@ -117,13 +117,13 @@
     type = DirichletBC
     variable = 'disp_y'
     value = 0
-    boundary = 'pin'
+    boundary = '7 8'
   []
   [zfix]
     type = DirichletBC
     variable = 'disp_z'
     value = 0
-    boundary = 'pin'
+    boundary = '7 8'
   []
 []
 
