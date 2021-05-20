@@ -43,13 +43,21 @@
   [props]
     type = GenericConstantMaterial
     prop_names = 'mu1 mu2 mu3 mu4 beta3 beta4 rho'
-    prop_values = '0 0 9.7 4.41336 3.6 11.257 0.260609'
+    prop_values = '${mu1}
+    ${mu2}
+    9.7
+    ${mu4}
+    3.6
+    ${beta4}
+    ${rho}'
+    # prop_values = '0 0 9.7 4.41336 3.6 11.257 0.260609'
   []
   [orientation]
     type = TissueOrientation
     phi1 = 'phi1'
     phi2 = 'phi2'
-    alpha = 0.3665
+    angle = ${alpha}
+    # alpha = 0.3665
     # alpha = 0.8076
   []
   [strain]
