@@ -110,7 +110,7 @@
     type = DirichletBC
     variable = 'disp_x'
     value = 0
-    boundary = '7'
+    boundary = '7 8'
   []
   [yfix]
     type = DirichletBC
