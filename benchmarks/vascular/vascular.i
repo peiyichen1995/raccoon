@@ -26,6 +26,9 @@
 []
 
 [AuxVariables]
+  [stress_xx]
+    family = MONOMIAL
+  []
   [phi1]
     order = SECOND
     initial_from_file_var = 'phi1'
@@ -78,7 +81,15 @@
     displacements = 'disp_x disp_y disp_z'
   []
 []
-
+[AuxKernels]
+  [stress_xx]
+    type = ADRankTwoAux
+    variable = 'stress_xx'
+    rank_two_tensor = cauchy_stress
+    index_i = 0
+    index_j = 0
+  []
+[]
 [BCs]
   [Pressure]
     [inner]
@@ -128,5 +139,17 @@
   [exodus]
     type = Exodus
     file_base = 'displacements'
+  []
+  [csv]
+    type = CSV
+    file_base = './output/complex_1'
+  []
+[]
+
+[Postprocessors]
+  [stress_xx]
+    type = PointValue
+    variable = 'stress_xx'
+    point = '0.15685 3.42683 0.646004'
   []
 []
