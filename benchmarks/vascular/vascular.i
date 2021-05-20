@@ -9,7 +9,7 @@
     input = fmg
     new_boundary = 'pin'
     # nodes = '267652'
-    nodes = '271739 249826'
+    nodes = '268006 247559 264888 260073 146399 312742 318318 396746'
   []
   second_order = true
 []
