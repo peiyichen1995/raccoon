@@ -147,7 +147,7 @@
 [Outputs]
   [exodus]
     type = Exodus
-    file_base = 'displacements stress_xx'
+    file_base = 'displacements_${N}'
   []
   [csv]
     type = CSV
