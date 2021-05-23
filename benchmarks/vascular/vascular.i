@@ -151,7 +151,7 @@
   []
   [csv]
     type = CSV
-    file_base = './output/complex_1'
+    file_base = './output/complex_${N}'
   []
 []
 
