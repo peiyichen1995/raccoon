@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file="rn_mle_100.txt"
+file="rn.txt"
 
 
 while read -r line; do
@@ -8,6 +8,6 @@ while read -r line; do
   echo "====================================="
   echo "running $line"
   echo "====================================="
-  mpiexec -n 2 ../../raccoon-opt -i media_circ_half.i > output.txt &
+  mpiexec -n 100 ../../raccoon-opt -i vascular.i $line > output.txt &
 
 done < $file
