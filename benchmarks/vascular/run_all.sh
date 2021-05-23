@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file="rn.txt"
+file="rn_cv.txt"
 
 
 while read -r line; do
@@ -8,6 +8,6 @@ while read -r line; do
   echo "====================================="
   echo "running $line"
   echo "====================================="
-  mpiexec -n 74 ../../raccoon-opt -i vascular.i $line > output.txt &
+  mpiexec -n 74 ../../raccoon-opt -i vascular.i $line
 
 done < $file
