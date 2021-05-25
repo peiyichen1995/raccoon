@@ -8,6 +8,6 @@ while read -r line; do
   echo "====================================="
   echo "running $line"
   echo "====================================="
-  mpiexec -n 74 ../../raccoon-opt -i vascular.i $line
+  mpiexec -n 50 ../../raccoon-opt -i vascular.i $line
 
 done < $file
